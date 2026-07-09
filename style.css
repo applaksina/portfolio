@@ -68,11 +68,36 @@ h1 {
 .card {
     display: flex;
     flex-direction: column;
+    height: 586px; /* фиксированная высота */
     background: #fff;
     border-radius: 20px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    position: relative; /* для бейджа */
+}
+
+.img {
+    height: 400px; /* фиксированная высота для картинки */
+    flex-shrink: 0;
+    overflow: hidden;
+    background: #ddd;
+}
+
+.img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.content {
+    padding: 20px;
+    flex: 1; /* займет оставшееся место */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* Приподнимаем карточку при ховере (она НЕ увеличивается) */
