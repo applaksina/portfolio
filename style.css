@@ -212,6 +212,27 @@ button {
 .hero-desc:last-of-type {
     margin-bottom: 0;
 }
+.hero-container {
+    display: flex;
+    justify-content: center;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 780px;
+}
+
+.hero-avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 24px;
+    background: #e0e0e0; /* заглушка, пока нет картинки */
+}
 
 /* ===== PROJECTS ===== */
 .projects {
