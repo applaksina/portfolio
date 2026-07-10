@@ -73,13 +73,7 @@ button {
     gap: 32px;
 }
 
-.brand {
-    font-weight: 600;
-    font-size: 1.1rem;
-    letter-spacing: -0.01em;
-    color: #000;
-}
-
+/* Убираем brand, оставляем только nav */
 .nav-left,
 .nav-right {
     display: flex;
@@ -87,9 +81,10 @@ button {
     gap: 12px;
 }
 
+/* Общие стили для ссылок в хедере (и левого, и правого блока) */
 .nav-link {
     padding: 6px 14px;
-    border-radius: 20px;
+    border-radius: 6px;          /* уменьшено с 20px до 6px */
     font-size: 0.95rem;
     font-weight: 450;
     color: #1a1a1a;
@@ -101,26 +96,20 @@ button {
     background: rgba(0, 0, 0, 0.05);
 }
 
-/* Right block: RU special */
-.nav-right .nav-link[data-action="email"]:hover,
-.nav-right .nav-link[data-action="telegram"]:hover,
-.nav-right .nav-link[data-action="max"]:hover {
-    background: rgba(0, 0, 0, 0.05);
-}
-
+/* Кнопка RU */
 .lang-toggle {
     padding: 6px 14px;
-    border-radius: 20px;
+    border-radius: 6px;          /* тоже уменьшено */
     font-size: 0.95rem;
     font-weight: 450;
-    color: #0066cc;
-    transition: color 0.15s ease, background 0.15s ease;
-    background: transparent;
+    color: #0066cc;              /* синий цвет */
+    transition: color 0.15s ease;
+    background: transparent;     /* фон всегда прозрачный */
 }
 
 .lang-toggle:hover {
-    color: #000000;
-    background: rgba(0, 0, 0, 0.05);
+    color: #000000;              /* только меняем цвет, заливки нет */
+    background: transparent;     /* явно убираем фон */
 }
 
 /* Hamburger */
@@ -197,6 +186,7 @@ button {
 }
 .mobile-lang-toggle:hover {
     color: #000;
+    background: transparent;
 }
 
 /* ===== HERO ===== */
@@ -342,7 +332,6 @@ button {
         grid-template-columns: 1fr;
     }
 
-    /* hide desktop nav, show hamburger */
     .nav-left,
     .nav-right {
         display: none;
@@ -351,7 +340,6 @@ button {
         display: flex;
     }
 
-    /* mobile menu becomes visible via JS, but we need it display:block with transform */
     .mobile-menu {
         display: block;
     }
