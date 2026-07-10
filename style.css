@@ -336,7 +336,7 @@ button {
         padding: 0 120px;
     }
     .projects-grid {
-        gap: 120px;
+        gap: 20px;
     }
 }
 
@@ -349,7 +349,7 @@ button {
         padding: 0 48px;
     }
     .projects-grid {
-        gap: 60px;
+        gap: 20px;
         grid-template-columns: 1fr;
     }
 
@@ -382,7 +382,7 @@ button {
         padding: 0 16px;
     }
     .projects-grid {
-        gap: 32px;
+        gap: 20px;
     }
 
     .hero {
