@@ -1,96 +1,146 @@
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio</title>
+    <title>Анастасия Плаксина · Портфолио</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <header class="header">
-        <div class="nav left">
-            <a href="#">CV</a>
-            <a href="#">HH</a>
-            <a href="#">Behance</a>
-            <a href="#">Dprofile</a>
-        </div>
-        <div class="nav right">
-            <a href="#">Telegram</a>
-            <a href="#">Max</a>
-            <a href="#">Phone</a>
-            <a href="#">Email</a>
-            <a href="index-en.html" class="lang">RU</a>
-            <!-- Кнопка для переключения стиля (добавлена) -->
-            <button id="toggleStyle" style="margin-left:16px; padding:4px 12px; border-radius:8px; border:1px solid #ccc; background:transparent; cursor:pointer;">✨ Стиль</button>
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="header">
+        <div class="header-inner">
+
+            <!-- Left block: brand + nav -->
+            <div class="header-left">
+                <a href="#" class="brand">Анастасия Плаксина</a>
+                <nav class="nav-left">
+                    <a href="#" class="nav-link" data-action="cv">CV</a>
+                    <a href="#" class="nav-link" data-action="hh">HH</a>
+                    <a href="#" class="nav-link" data-action="dprofile">Dprofile</a>
+                </nav>
+            </div>
+
+            <!-- Right block: social + lang -->
+            <div class="header-right">
+                <nav class="nav-right">
+                    <a href="#" class="nav-link" data-action="telegram">Telegram</a>
+                    <a href="#" class="nav-link" data-action="max">Max</a>
+                    <a href="#" class="nav-link" data-action="email">Email</a>
+                    <button class="lang-toggle" id="langToggle">RU</button>
+                </nav>
+                <!-- Hamburger (mobile) -->
+                <button class="hamburger" id="hamburger" aria-label="Меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
         </div>
     </header>
 
+    <!-- ===== MOBILE MENU OVERLAY ===== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-inner">
+            <nav class="mobile-nav">
+                <a href="#" class="mobile-nav-link" data-action="cv">CV</a>
+                <a href="#" class="mobile-nav-link" data-action="hh">HH</a>
+                <a href="#" class="mobile-nav-link" data-action="dprofile">Dprofile</a>
+                <a href="#" class="mobile-nav-link" data-action="telegram">Telegram</a>
+                <a href="#" class="mobile-nav-link" data-action="max">Max</a>
+                <a href="#" class="mobile-nav-link" data-action="email">Email</a>
+                <button class="mobile-lang-toggle" id="mobileLangToggle">RU</button>
+            </nav>
+        </div>
+    </div>
+
+    <!-- ===== HERO ===== -->
     <section class="hero">
-        <div class="avatar"></div>
-        <h1>Анастасия Плаксина</h1>
-        <p class="desc small">
-            Проектирую интерфейсы с нуля: от исследований и сценариев до передачи макетов в разработку
-            и построения дизайн-систем.
-        </p>
-        <p class="desc small">
-            До дизайна работала в автоматизации технологических процессов, где также имела дело с пользовательским опытом.
-            Этот опыт дал мне навык — вникать в сложные процессы и проектировать решения под рабочие задачи.
-        </p>
-    </section>
-
-    <section class="cases">
-        <!-- Карточка 1 -->
-        <div class="card">
-            <div class="img">
-                <img src="https://via.placeholder.com/600x400/1976d2/ffffff?text=Дашборды" alt="Дашборды" />
-            </div>
-            <div class="badge">Coming soon</div>
-            <div class="content">
-                <h3>ДАШБОРДЫ · РОССОТРУДНИЧЕСТВО</h3>
-                <p>Интерактивные дашборды</p>
-                <span>2026</span>
-            </div>
-        </div>
-
-        <!-- Карточка 2 -->
-        <div class="card">
-            <div class="img">
-                <img src="https://via.placeholder.com/600x400/388e3c/ffffff?text=Личный+кабинет" alt="Глобус личный кабинет" />
-            </div>
-            <div class="badge">Coming soon</div>
-            <div class="content">
-                <h3>ГЛОБУС · ЛИЧНЫЙ КАБИНЕТ</h3>
-                <p>Кабинет управления системой</p>
-                <span>2026</span>
-            </div>
-        </div>
-
-        <!-- Карточка 3 -->
-        <div class="card">
-            <div class="img">
-                <img src="https://via.placeholder.com/600x400/e65100/ffffff?text=Визуализатор+графов" alt="Глобус визуализатор" />
-            </div>
-            <div class="badge">Coming soon</div>
-            <div class="content">
-                <h3>ГЛОБУС · ВИЗУАЛИЗАТОР</h3>
-                <p>Система отображения графов</p>
-                <span>2025</span>
-            </div>
-        </div>
-
-        <!-- Карточка 4 (последняя) – с вашим файлом oracul.png -->
-        <div class="card">
-            <div class="img">
-                <img src="oracul.png" alt="ОРАКУЛ - М" />
-            </div>
-            <div class="badge">Coming soon</div>
-            <div class="content">
-                <h3>ОРАКУЛ - М</h3>
-                <p>Система визуализации данных</p>
-                <span>2025</span>
-            </div>
+        <div class="container">
+            <h1 class="hero-title">Анастасия Плаксина</h1>
+            <p class="hero-desc">
+                Проектирую интерфейсы с&nbsp;нуля: от&nbsp;исследований и&nbsp;сценариев
+                до&nbsp;передачи макетов в&nbsp;разработку и&nbsp;построения дизайн-систем.
+            </p>
+            <p class="hero-desc">
+                До&nbsp;дизайна работала в&nbsp;автоматизации технологических процессов,
+                где также имела дело с&nbsp;«пользовательским опытом»: проектировала мнемосхемы
+                и&nbsp;адаптировала интерфейсы промышленного оборудования. Этот опыт дал мне
+                уникальный навык — вникать в&nbsp;сложные процессы и&nbsp;проектировать решения
+                под&nbsp;рабочие задачи.
+            </p>
         </div>
     </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="projects">
+        <div class="container">
+            <div class="projects-grid">
+
+                <!-- Card 1 -->
+                <article class="project-card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/globus/600/340" alt="ГЛОБУС · ЛИЧНЫЙ КАБИНЕТ" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                        <span class="card-tag">Coming soon</span>
+                        <h3 class="card-title">ГЛОБУС · ЛИЧНЫЙ КАБИНЕТ</h3>
+                        <p class="card-desc">Кабинет управления системой</p>
+                        <span class="card-year">2026</span>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="project-card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/dashboard/600/340" alt="ДАШБОРДЫ ДЛЯ РОССОТРУДНИЧЕСТВА" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                        <span class="card-tag">Coming soon</span>
+                        <h3 class="card-title">ДАШБОРДЫ ДЛЯ РОССОТРУДНИЧЕСТВА</h3>
+                        <p class="card-desc">Интерактивные дашборды (MVP)</p>
+                        <span class="card-year">2026</span>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="project-card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/graph/600/340" alt="ГЛОБУС · ВИЗУАЛИЗАТОР" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                        <span class="card-tag">Coming soon</span>
+                        <h3 class="card-title">ГЛОБУС · ВИЗУАЛИЗАТОР</h3>
+                        <p class="card-desc">Система визуализации графов</p>
+                        <span class="card-year">2026</span>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="project-card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/oracle/600/340" alt="ОРАКУЛ - М" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                        <span class="card-tag">Coming soon</span>
+                        <h3 class="card-title">ОРАКУЛ - М</h3>
+                        <p class="card-desc">Система визуализации данных</p>
+                        <span class="card-year">2025</span>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">2026 Version 1.0</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
