@@ -222,16 +222,6 @@ button {
     color: #1a1a1a;
 }
 
-.mobile-lang-toggle {
-    color: #0066cc;
-    font-size: 1.6rem;
-    margin-top: 8px;
-}
-.mobile-lang-toggle:hover {
-    color: #000;
-    background: transparent;
-}
-
 /* ===== HERO ===== */
 .hero {
     padding-top: 140px;
