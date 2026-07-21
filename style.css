@@ -111,6 +111,21 @@ button {
     color: #000000;              /* только меняем цвет, заливки нет */
     background: transparent;     /* явно убираем фон */
 }
+/* Кнопка RU в левой части – скрыта на десктопе */
+.lang-toggle-mobile {
+    display: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 450;
+    color: #0066cc;
+    transition: color 0.15s ease;
+    background: transparent;
+}
+.lang-toggle-mobile:hover {
+    color: #000000;
+    background: transparent;
+}
 
 /* Hamburger */
 .hamburger {
@@ -152,6 +167,7 @@ button {
     justify-content: center;
     min-height: 100%;
     position: relative;
+    padding-top: 60px;
 }
 
 .mobile-nav {
@@ -185,6 +201,7 @@ button {
     border: none;
     cursor: pointer;
     padding: 0;
+    z-index: 10;
 }
 
 .mobile-close img {
@@ -383,6 +400,18 @@ button {
     }
     .hero-desc {
         font-size: 1rem;
+    }
+    /* скрываем навигационные ссылки в левой части */
+    .nav-left {
+        display: none;
+    }
+    /* показываем мобильную кнопку RU */
+    .lang-toggle-mobile {
+        display: inline-block;
+    }
+    /* скрываем правую кнопку RU (чтобы не дублировалась) */
+    .nav-right .lang-toggle {
+        display: none;
     }
 }
 
