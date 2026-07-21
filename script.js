@@ -148,13 +148,12 @@
         // не закрываем меню, чтобы было удобно
     });
 
-    // ---------- ЗАКРЫТИЕ МЕНЮ ПРИ РЕСАЙЗЕ (если стало > 768) ----------
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            if (mobileMenu.classList.contains('open')) {
-                closeMobileMenu();
-            }
-        }
+    // Закрытие по крестику
+const mobileClose = document.getElementById('mobileClose');
+if (mobileClose) {
+    mobileClose.addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeMobileMenu();
     });
-
+}
 })();
