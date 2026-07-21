@@ -123,13 +123,10 @@ button {
     cursor: pointer;
 }
 
-.hamburger span {
+.hamburger img {
     display: block;
-    width: 26px;
-    height: 2.5px;
-    background: #1a1a1a;
-    border-radius: 4px;
-    transition: 0.2s;
+    width: 32px;  /* подгоните под свою иконку */
+    height: 32px;
 }
 
 /* ===== MOBILE MENU ===== */
@@ -154,6 +151,7 @@ button {
     flex-direction: column;
     justify-content: center;
     min-height: 100%;
+    position: relative;
 }
 
 .mobile-nav {
@@ -179,6 +177,21 @@ button {
     color: #555;
 }
 
+.mobile-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.mobile-close img {
+    display: block;
+    width: 42px;
+    height: 42px;
+}
 .mobile-lang-toggle {
     color: #0066cc;
     font-size: 1.6rem;
