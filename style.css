@@ -167,7 +167,7 @@ button {
     justify-content: center;
     min-height: 100%;
     position: relative;
-    padding-top: 16px;
+    padding-top: 60px;
 }
 
 .mobile-nav {
@@ -195,8 +195,8 @@ button {
 
 .mobile-close {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 8px;
+    right: 8px;
     background: none;
     border: none;
     cursor: pointer;
