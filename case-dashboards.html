@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Дашборды для Россотрудничества · Кейс</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- ===== HEADER (такой же, как на главной) ===== -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <div class="header-left">
+                <button class="lang-toggle-mobile" id="langToggleMobile">RU</button>
+                <nav class="nav-left">
+                    <a href="#" class="nav-link" data-action="cv">CV</a>
+                    <a href="#" class="nav-link" data-action="hh">HH</a>
+                    <a href="#" class="nav-link" data-action="dprofile">Dprofile</a>
+                </nav>
+            </div>
+            <div class="header-right">
+                <nav class="nav-right">
+                    <a href="#" class="nav-link" data-action="telegram">Telegram</a>
+                    <a href="#" class="nav-link" data-action="max">Max</a>
+                    <a href="#" class="nav-link" data-action="email">Email</a>
+                    <button class="lang-toggle" id="langToggle">RU</button>
+                </nav>
+                <button class="hamburger" id="hamburger" aria-label="Меню">
+                    <img src="images/menu-icon.svg" alt="Открыть меню" />
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== МОБИЛЬНОЕ МЕНЮ (копия с главной) ===== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-inner">
+            <button class="mobile-close" id="mobileClose">
+                <img src="images/close-icon.svg" alt="Закрыть меню" />
+            </button>
+            <nav class="mobile-nav">
+                <a href="#" class="mobile-nav-link" data-action="cv">CV</a>
+                <a href="#" class="mobile-nav-link" data-action="hh">HH</a>
+                <a href="#" class="mobile-nav-link" data-action="dprofile">Dprofile</a>
+                <a href="#" class="mobile-nav-link" data-action="telegram">Telegram</a>
+                <a href="#" class="mobile-nav-link" data-action="max">Max</a>
+                <a href="#" class="mobile-nav-link" data-action="email">Email</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- ===== ОСНОВНОЙ КОНТЕНТ ===== -->
+    <main class="case-main">
+        <div class="container">
+
+            <!-- Хлебные крошки -->
+            <nav class="breadcrumbs">
+                <a href="index.html" class="breadcrumb-link">Кейсы</a>
+                <span class="breadcrumb-separator"> / </span>
+                <span class="breadcrumb-current">Дашборды для Россотрудничества</span>
+            </nav>
+
+            <!-- Блок 1: Россотрудничество (логотип + описание) -->
+            <section class="case-block case-block-intro">
+                <div class="case-intro-grid">
+                    <div class="case-logo">
+                        <img src="images/rs-logo.png" alt="Логотип Россотрудничества" />
+                    </div>
+                    <div class="case-intro-text">
+                        <h2 class="case-block-title">Россотрудничество</h2>
+                        <p class="case-block-text">
+                            Федеральное агентство, развивающее международные связи<br />
+                            России со странами СНГ и другими государствами
+                        </p>
+                    </div>
+                </div>
+                <div class="case-intro-image">
+                    <img src="images/dashboard-preview.png" alt="Превью дашборда" />
+                </div>
+            </section>
+
+            <!-- Блок 2: Проблема -->
+            <section class="case-block">
+                <h2 class="case-block-title">Проблема</h2>
+                <p class="case-block-text">
+                    Данные по 20+ странам лежат в таблицах. Аналитики собирают инфографику каждый раз по конкретной стране.<br />
+                    Руководству хочется видеть ситуацию в целом, в любой момент времени — просто обратившись к интерактивному документу
+                </p>
+            </section>
+
+            <!-- Блок 3: Задача -->
+            <section class="case-block">
+                <h2 class="case-block-title">Задача</h2>
+                <p class="case-block-text">
+                    Создание MVP дашборда для визуализации показателей отношения к России в странах присутствия
+                </p>
+            </section>
+
+            <!-- Блок 4: Показ (цифры) -->
+            <section class="case-block case-block-stats">
+                <h2 class="case-block-title">Показ</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-value">73,6%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">0,977</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">0,15%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">86%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">+2%</span>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- ===== FOOTER (такой же) ===== -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">2026 Version 1.0</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
