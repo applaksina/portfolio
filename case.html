@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>ОРАКУЛ-М — кейс Анастасии Плаксиной</title>
+  <meta name="description" content="Кейс ОРАКУЛ-М: исследование, сценарии, проектирование и проверка MVP системы визуализации данных.">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="page">
+    <aside class="sidebar" aria-label="Информация об авторе">
+      <div class="sidebar__top">
+        <nav class="navigation" aria-label="Основная навигация">
+          <a class="pill pill--primary" href="index.html">Назад</a>
+          <a class="pill pill--secondary" href="index.html#about">Обо мне</a>
+          <button class="pill pill--secondary" type="button" data-contact="cv">Скачать CV</button>
+        </nav>
+
+        <div class="profile">
+          <div class="placeholder profile__photo" role="img" aria-label="Место для фотографии автора">
+            <span>[PHOTO]</span>
+          </div>
+          <p class="profile__name">Анастасия Плаксина</p>
+          <p class="profile__description">
+            Проектирую интерфейсы с нуля:<br>
+            от исследований и сценариев<br>
+            до передачи макетов в разработку<br>
+            и построения дизайн-систем.
+          </p>
+        </div>
+      </div>
+
+      <div class="socials" aria-label="Контакты">
+        <button class="pill pill--secondary social" type="button" data-contact="telegram" aria-label="Telegram">TG</button>
+        <button class="pill pill--secondary social" type="button" data-contact="max" aria-label="MAX">MAX</button>
+        <button class="pill pill--secondary social" type="button" data-contact="email" aria-label="Электронная почта">EMAIL</button>
+      </div>
+    </aside>
+
+    <main class="content case-content" id="case">
+      <article class="case">
+        <div class="case__hero placeholder" role="img" aria-label="Место для главной иллюстрации проекта">
+          <span>[PROJECT COVER]</span>
+          <div class="case__hero-tags" aria-hidden="true">
+            <span class="hero-tag">2025</span>
+            <span class="hero-tag">MVP</span>
+          </div>
+        </div>
+
+        <header class="case__header">
+          <h1 class="case__title">ОРАКУЛ-М</h1>
+        </header>
+
+        <section class="case-section" aria-labelledby="about-project">
+          <h2 class="section-label" id="about-project">О проекте</h2>
+          <p>
+            В рамках MVP были разработаны ключевые сценарии сервиса хранения,
+            визуализации и отображения оперативных данных для МВД России.
+            Платформа интегрирует информацию всех региональных структур в единое
+            окно, обеспечивая руководителей и аналитиков актуальными показателями
+            для мониторинга и прогнозирования.
+          </p>
+          <dl class="case-facts">
+            <div>
+              <dt>Команда:</dt>
+              <dd>PM, Backend-разработчик, Frontend-разработчик, Дизайнер</dd>
+            </div>
+            <div>
+              <dt>Моя роль:</dt>
+              <dd>Продуктовый дизайнер (end-to-end)</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="case-section" aria-labelledby="problem">
+          <h2 class="section-label" id="problem">Проблема и задача</h2>
+          <ul class="case-list">
+            <li>
+              Данные собирались в виде таблиц — около 50 показателей по каждому региону.
+              Формально информация была полной, но, чтобы понять, кто растёт, а кто
+              проседает, приходилось вручную сопоставлять данные и строить графики
+              для отчётов.
+            </li>
+            <li>
+              Нужен был инструмент, который соберёт их в единую визуальную среду.
+              Так возникла задача спроектировать систему для мониторинга показателей,
+              сравнительного анализа подразделений и прогнозирования их эффективности.
+            </li>
+          </ul>
+        </section>
+
+        <section class="case-section" aria-labelledby="interviews">
+          <h2 class="section-label" id="interviews">Интервью</h2>
+          <p>
+            Чтобы понять реальные потребности заказчика, я провела 4 интервью
+            с представителями заказчика. Сопоставив их ответы с предоставленными
+            данными — региональными таблицами и отчётами аналитиков, — выделила
+            ключевые инсайты.
+          </p>
+
+          <div class="note-list">
+            <div class="note">
+              <h3>Инсайт 1. Загрузка и валидация документов</h3>
+              <p>
+                Исходные таблицы иногда содержат пропуски или ошибки. Заказчикам
+                критически важно понимать, какие строки требуют внимания, и отсекать
+                некорректные данные до формирования отчётов. При массовом обновлении
+                нескольких таблиц время проверки возрастает.
+              </p>
+            </div>
+            <div class="note">
+              <h3>Инсайт 2. Тренд важнее абсолютного значения</h3>
+              <p>
+                Основная ценность — динамика показателя относительно аналогичного
+                периода прошлого года, а также положение региона на фоне общей
+                динамики по России.
+              </p>
+            </div>
+            <div class="note">
+              <h3>Инсайт 3. Рост показателя не всегда означает улучшение</h3>
+              <p>
+                Показатели различаются по желаемому направлению: для одних рост
+                означает улучшение, для других — ухудшение.
+              </p>
+            </div>
+            <div class="note">
+              <h3>Инсайт 4. Иерархическое мышление</h3>
+              <p>
+                Заказчик оценивает ситуацию от общего к частному: сначала в стране
+                в целом, затем в федеральном округе и только потом в конкретном регионе.
+              </p>
+            </div>
+            <div class="note">
+              <h3>Инсайт 5. Прогноз необходим для планирования</h3>
+              <p>
+                Заказчик хочет видеть не только текущие данные, но и прогнозные
+                значения на конец года, чтобы заранее принимать решения.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-section" aria-labelledby="user-flow">
+          <h2 class="section-label" id="user-flow">Анализ и создание User Flow</h2>
+          <p>
+            На основе инсайтов интервью сформулировала Job Story, которые стали
+            основой для проектирования User Flow и первой версии продукта.
+          </p>
+
+          <div class="note-list">
+            <div class="note note--story">
+              <h3>Story 1</h3>
+              <p>
+                Когда я обновляю данные в системе, я хочу, чтобы ошибки выявлялись
+                до попадания в базу, чтобы итоговые отчёты оставались достоверными.
+              </p>
+            </div>
+            <div class="note note--story">
+              <h3>Story 2</h3>
+              <p>
+                Когда мне необходимо одновременно обновить данные по всей стране,
+                я хочу загрузить подготовленные файлы одним потоком, чтобы не
+                повторять одни и те же действия для каждого региона.
+              </p>
+            </div>
+            <div class="note note--story">
+              <h3>Story 3</h3>
+              <p>
+                Когда мне нужно оценить распределение показателей по округам
+                и регионам, я хочу видеть все территории одновременно, чтобы быстро
+                определять положительные и отрицательные тренды.
+              </p>
+            </div>
+            <div class="note note--story">
+              <h3>Story 4</h3>
+              <p>
+                Когда мне нужно понять ситуацию в конкретном регионе, я хочу
+                сравнить динамику показателя с прошлым годом и динамикой по России.
+              </p>
+            </div>
+            <div class="note note--story">
+              <h3>Story 5</h3>
+              <p>
+                Когда мне нужно проверить конкретные показатели, я хочу видеть
+                данные в привычной табличной форме и сужать выборку по показателю,
+                региону и периоду.
+              </p>
+            </div>
+          </div>
+
+          <div class="placeholder case__flow" role="img" aria-label="Место для схемы пользовательского сценария">
+            <span>[USER FLOW]</span>
+          </div>
+        </section>
+
+        <section class="case-section" aria-labelledby="testing">
+          <h2 class="section-label" id="testing">Первая итерация и юзабилити-тестирование</h2>
+          <p>
+            Чтобы проверить логику пользовательского пути и корректность решений,
+            было проведено юзабилити-тестирование на кликабельном прототипе.
+            Фокус первой итерации — основные сценарии работы с картой.
+          </p>
+
+          <div class="testing-panel">
+            <div class="testing-panel__head">
+              <span>Гипотеза</span>
+              <span>Критерии успеха</span>
+            </div>
+
+            <div class="hypothesis">
+              <p>
+                Если кнопка загрузки данных расположена в сайдбаре и имеет подсказку
+                «Загрузить данные», пользователь найдёт её без помощи модератора.
+                <span class="hypothesis__badge">Подтверждена частично</span>
+              </p>
+              <div>
+                <p>Не менее 4 из 5 участников находят кнопку и понимают её назначение.</p>
+                <p>По результатам проверки кнопку перенесли в верхнюю часть сайдбара.</p>
+              </div>
+            </div>
+
+            <div class="hypothesis">
+              <p>
+                Если после загрузки показывать список файлов со статусами валидации
+                и пояснениями ошибок, пользователь поймёт, какие файлы требуют исправления.
+                <span class="hypothesis__badge">Подтверждена</span>
+              </p>
+              <div>
+                <p>Не менее 4 из 5 участников различают успешную загрузку и ошибки.</p>
+                <p>Пользователь может назвать причину ошибки и следующий шаг.</p>
+              </div>
+            </div>
+
+            <div class="hypothesis">
+              <p>
+                Если окрашивать регионы на карте в соответствии с динамикой показателя
+                и показывать легенду, пользователь определит территории с улучшением
+                и ухудшением.
+                <span class="hypothesis__badge">Подтверждена</span>
+              </p>
+              <div>
+                <p>Не менее 4 из 5 участников верно интерпретируют цвета карты.</p>
+                <p>Легенда помогает понять направление изменения показателя.</p>
+              </div>
+            </div>
+
+            <div class="hypothesis">
+              <p>
+                Если в карточке показателя одновременно показывать значение,
+                отклонение к прошлому году и отклонение от России, пользователь
+                сможет оценить локальную динамику.
+                <span class="hypothesis__badge">Подтверждена</span>
+              </p>
+              <div>
+                <p>Не менее 4 из 5 участников различают локальный и общероссийский тренды.</p>
+                <p>Отклонения интерпретируются без переключения на другие экраны.</p>
+              </div>
+            </div>
+
+            <p class="testing-panel__observation">
+              Наблюдение: стрелки рядом с цифрами воспринимались как оценка «хорошо»
+              или «плохо», хотя обозначали только направление изменения. От них
+              отказались, оставив оценку динамики цвету и пояснению.
+            </p>
+
+            <div class="hypothesis">
+              <p>
+                Если на карте доступны поиск региона и последовательный переход
+                «Россия → округ → регион», пользователь сможет найти нужную территорию
+                для разных аналитических задач.
+              </p>
+              <div>
+                <p>Не менее 4 из 5 участников находят регион без подсказки модератора.</p>
+                <p>Способ навигации соответствует задаче пользователя.</p>
+              </div>
+            </div>
+
+            <p class="testing-panel__observation">
+              Наблюдение: при переходе между округами пользователям требовался
+              более понятный способ возврата к карте России.
+            </p>
+
+            <div class="hypothesis">
+              <p>
+                Если при переключении в режим прогноза явно меняются цветовая схема
+                и подписи, пользователь отличит прогнозные значения от фактических.
+              </p>
+              <div>
+                <p>Не менее 4 из 5 участников правильно называют текущий режим.</p>
+                <p>Для понимания не требуются пояснения модератора.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-section" aria-labelledby="mockups">
+          <h2 class="section-label" id="mockups">Макеты</h2>
+
+          <div class="gallery" data-gallery>
+            <div class="gallery__stage placeholder" role="img" aria-label="Место для макета интерфейса">
+              <span class="gallery__image-label" data-gallery-label>[MOCKUP 1]</span>
+              <button class="icon-button gallery__expand" type="button" data-gallery-open aria-label="Открыть макет на весь экран">⛶</button>
+              <button class="icon-button gallery__previous" type="button" data-gallery-previous aria-label="Предыдущий макет">‹</button>
+              <button class="icon-button gallery__next" type="button" data-gallery-next aria-label="Следующий макет">›</button>
+              <div class="gallery__dots" data-gallery-dots aria-label="Выбор макета"></div>
+            </div>
+            <p class="gallery__caption" data-gallery-caption>Главный экран проекта</p>
+          </div>
+        </section>
+
+        <section class="case-section case-section--last" aria-labelledby="result">
+          <h2 class="section-label" id="result">Результат</h2>
+          <p>
+            В рамках MVP были разработаны ключевые сценарии сервиса хранения,
+            визуализации и отображения оперативных данных. Платформа объединяет
+            информацию региональных структур в одном интерфейсе для мониторинга
+            и прогнозирования.
+          </p>
+          <dl class="result-facts">
+            <div>
+              <dt>Статус:</dt>
+              <dd>
+                На стадии внедрения. Количественные метрики ещё не накоплены.
+                Получена положительная обратная связь от заказчика об уменьшении
+                времени на оценку и составление отчётов.
+              </dd>
+            </div>
+            <div>
+              <dt>Что дальше:</dt>
+              <dd>
+                <ul class="case-list">
+                  <li>Сбор метрик для выявления узких мест интерфейса.</li>
+                  <li>Внедрение ролей с разными уровнями доступа.</li>
+                  <li>Персонализация дашборда и сохранение пользовательских экранов.</li>
+                </ul>
+              </dd>
+            </div>
+          </dl>
+        </section>
+      </article>
+    </main>
+  </div>
+
+  <dialog class="lightbox" data-lightbox aria-label="Просмотр макета">
+    <div class="lightbox__inner">
+      <button class="icon-button lightbox__close" type="button" data-lightbox-close aria-label="Закрыть просмотр">×</button>
+      <div class="placeholder lightbox__image" role="img" aria-label="Место для увеличенного макета">
+        <span data-lightbox-label>[MOCKUP 1]</span>
+      </div>
+      <p class="lightbox__caption" data-lightbox-caption>Главный экран проекта</p>
+    </div>
+  </dialog>
+
+  <div class="notice" id="contact-notice" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
