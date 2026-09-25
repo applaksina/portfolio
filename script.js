@@ -1,181 +1,155 @@
-(function() {
-    'use strict';
+"use strict";
 
-    // ---------- HEADER SCROLL (hide on down, show on up) ----------
-    const header = document.getElementById('header');
-    let lastScrollY = window.scrollY;
-    let ticking = false;
+/*
+  Добавьте реальные адреса перед публикацией.
+  Примеры формата:
+  telegram: "https://t.me/username"
+  max: "https://max.ru/username"
+  email: "mailto:name@example.com"
+  cv: "cv.pdf"
 
-    function updateHeader() {
-        const currentScrollY = window.scrollY;
-        if (currentScrollY > lastScrollY && currentScrollY > 60) {
-            header.classList.add('hidden');
-        } else {
-            header.classList.remove('hidden');
-        }
-        lastScrollY = currentScrollY;
-        ticking = false;
+  Для cv положите PDF рядом с HTML-файлами либо укажите другой действительный путь.
+*/
+const contactLinks = {
+  telegram: "",
+  max: "",
+  email: "",
+  cv: ""
+};
+
+const contactMessages = {
+  telegram: "Ссылка на Telegram пока не добавлена.",
+  max: "Ссылка на MAX пока не добавлена.",
+  email: "Адрес электронной почты пока не добавлен.",
+  cv: "Файл CV пока не добавлен."
+};
+
+const notice = document.getElementById("contact-notice");
+let noticeTimer;
+
+function showNotice(message) {
+  if (!notice) return;
+
+  notice.textContent = message;
+  notice.hidden = false;
+
+  window.clearTimeout(noticeTimer);
+  noticeTimer = window.setTimeout(() => {
+    notice.hidden = true;
+  }, 4000);
+}
+
+document.querySelectorAll("[data-contact]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const type = button.dataset.contact;
+    const destination = contactLinks[type];
+
+    if (!destination) {
+      showNotice(contactMessages[type]);
+      return;
     }
 
-    window.addEventListener('scroll', function() {
-        if (!ticking) {
-            window.requestAnimationFrame(function() {
-                updateHeader();
-            });
-            ticking = true;
-        }
+    if (type === "cv") {
+      const download = document.createElement("a");
+      download.href = destination;
+      download.download = destination.split("/").pop() || "cv.pdf";
+      document.body.appendChild(download);
+      download.click();
+      download.remove();
+      return;
+    }
+
+    if (type === "email") {
+      window.location.href = destination;
+      return;
+    }
+
+    window.open(destination, "_blank", "noopener,noreferrer");
+  });
+});
+
+const gallery = document.querySelector("[data-gallery]");
+const lightbox = document.querySelector("[data-lightbox]");
+
+if (gallery && lightbox) {
+  const slides = [
+    { label: "[MOCKUP 1]", caption: "Главный экран проекта" },
+    { label: "[MOCKUP 2]", caption: "Карта и показатели" },
+    { label: "[MOCKUP 3]", caption: "Карточка региона" },
+    { label: "[MOCKUP 4]", caption: "Сравнение данных" },
+    { label: "[MOCKUP 5]", caption: "Табличный вид" },
+    { label: "[MOCKUP 6]", caption: "Загрузка файлов" },
+    { label: "[MOCKUP 7]", caption: "Прогноз показателей" }
+  ];
+
+  const imageLabel = gallery.querySelector("[data-gallery-label]");
+  const caption = gallery.querySelector("[data-gallery-caption]");
+  const dotsContainer = gallery.querySelector("[data-gallery-dots]");
+  const lightboxLabel = lightbox.querySelector("[data-lightbox-label]");
+  const lightboxCaption = lightbox.querySelector("[data-lightbox-caption]");
+  const previousButton = gallery.querySelector("[data-gallery-previous]");
+  const nextButton = gallery.querySelector("[data-gallery-next]");
+  const openButton = gallery.querySelector("[data-gallery-open]");
+  const closeButton = lightbox.querySelector("[data-lightbox-close]");
+
+  let activeIndex = 0;
+
+  slides.forEach((slide, index) => {
+    const dot = document.createElement("button");
+    dot.className = "gallery__dot";
+    dot.type = "button";
+    dot.setAttribute("aria-label", `Показать макет ${index + 1}: ${slide.caption}`);
+    dot.addEventListener("click", () => showSlide(index));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = Array.from(dotsContainer.children);
+
+  function showSlide(index) {
+    activeIndex = (index + slides.length) % slides.length;
+    const slide = slides[activeIndex];
+
+    imageLabel.textContent = slide.label;
+    caption.textContent = slide.caption;
+    lightboxLabel.textContent = slide.label;
+    lightboxCaption.textContent = slide.caption;
+
+    dots.forEach((dot, dotIndex) => {
+      dot.setAttribute("aria-current", String(dotIndex === activeIndex));
     });
+  }
 
-    // ---------- MOBILE MENU ----------
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-    const mobileClose = document.getElementById('mobileClose');
+  previousButton.addEventListener("click", () => showSlide(activeIndex - 1));
+  nextButton.addEventListener("click", () => showSlide(activeIndex + 1));
 
-    function openMobileMenu() {
-        mobileMenu.classList.add('open');
-        document.body.style.overflow = 'hidden';
+  openButton.addEventListener("click", () => {
+    lightbox.showModal();
+    closeButton.focus();
+  });
+
+  closeButton.addEventListener("click", () => {
+    lightbox.close();
+  });
+
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+      lightbox.close();
+    }
+  });
+
+  lightbox.addEventListener("close", () => {
+    openButton.focus();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft" && (lightbox.open || gallery.contains(document.activeElement))) {
+      showSlide(activeIndex - 1);
     }
 
-    function closeMobileMenu() {
-        mobileMenu.classList.remove('open');
-        document.body.style.overflow = '';
+    if (event.key === "ArrowRight" && (lightbox.open || gallery.contains(document.activeElement))) {
+      showSlide(activeIndex + 1);
     }
+  });
 
-    if (hamburger) {
-        hamburger.addEventListener('click', function(e) {
-            e.stopPropagation();
-            if (mobileMenu.classList.contains('open')) {
-                closeMobileMenu();
-            } else {
-                openMobileMenu();
-            }
-        });
-    }
-
-    if (mobileClose) {
-        mobileClose.addEventListener('click', function(e) {
-            e.stopPropagation();
-            closeMobileMenu();
-        });
-    }
-
-    // close on link click (mobile)
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            closeMobileMenu();
-        });
-    });
-
-    // close on background click
-    if (mobileMenu) {
-        mobileMenu.addEventListener('click', function(e) {
-            if (e.target === mobileMenu || e.target === mobileMenu.querySelector('.mobile-menu-inner')) {
-                closeMobileMenu();
-            }
-        });
-    }
-
-    // ---------- ACTIONS (desktop & mobile) ----------
-    function handleAction(action, event) {
-        if (event) event.preventDefault();
-
-        switch (action) {
-            case 'cv':
-                window.open('cv.pdf', '_blank');
-                break;
-            case 'hh':
-                window.open('https://hh.ru/resume/your-resume-id', '_blank');
-                break;
-            case 'dprofile':
-                // Dprofile пока не создан – ничего не делаем
-                break;
-            case 'telegram':
-                window.open('https://t.me/your_telegram', '_blank');
-                break;
-            case 'max':
-                window.open('https://t.me/max_chat', '_blank');
-                break;
-            case 'email':
-                window.location.href = 'mailto:your@email.com';
-                break;
-            default:
-                break;
-        }
-    }
-
-    // desktop nav links
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-            const action = this.dataset.action;
-            if (action) {
-                handleAction(action, e);
-            }
-        });
-    });
-
-    // mobile nav links
-    document.querySelectorAll('.mobile-nav-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-            const action = this.dataset.action;
-            if (action) {
-                handleAction(action, e);
-                closeMobileMenu();
-            }
-        });
-    });
-
-    // ---------- LANG TOGGLE (RU / EN) ----------
-    const langToggle = document.getElementById('langToggle');              // правая кнопка в десктопе
-    const mobileLangToggle = document.getElementById('mobileLangToggle'); // кнопка внутри мобильного меню
-    const langToggleMobile = document.getElementById('langToggleMobile'); // НОВАЯ левая кнопка на мобильных
-
-    let currentLang = 'ru';
-
-    function toggleLang() {
-        if (currentLang === 'ru') {
-            currentLang = 'en';
-            if (langToggle) langToggle.textContent = 'EN';
-            if (mobileLangToggle) mobileLangToggle.textContent = 'EN';
-            if (langToggleMobile) langToggleMobile.textContent = 'EN';
-        } else {
-            currentLang = 'ru';
-            if (langToggle) langToggle.textContent = 'RU';
-            if (mobileLangToggle) mobileLangToggle.textContent = 'RU';
-            if (langToggleMobile) langToggleMobile.textContent = 'RU';
-        }
-        // Никакого перевода страницы – только смена надписи.
-    }
-
-    if (langToggle) {
-        langToggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            toggleLang();
-        });
-    }
-
-    if (mobileLangToggle) {
-        mobileLangToggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            toggleLang();
-        });
-    }
-
-    // НОВЫЙ обработчик для левой кнопки RU на мобильных
-    if (langToggleMobile) {
-        langToggleMobile.addEventListener('click', function(e) {
-            e.stopPropagation();
-            toggleLang();
-        });
-    }
-
-    // ---------- ЗАКРЫТИЕ МЕНЮ ПРИ РЕСАЙЗЕ (если стало > 768) ----------
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            if (mobileMenu && mobileMenu.classList.contains('open')) {
-                closeMobileMenu();
-            }
-        }
-    });
-
-})();
+  showSlide(0);
+}
