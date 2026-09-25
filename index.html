@@ -1,158 +1,116 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <title>Анастасия Плаксина · Портфолио</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Анастасия Плаксина — продуктовый дизайнер</title>
+  <meta name="description" content="Портфолио Анастасии Плаксиной: продуктовый дизайн, исследования и дизайн-системы.">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <div class="page">
+    <aside class="sidebar" aria-label="Информация об авторе">
+      <div class="sidebar__top">
+        <nav class="navigation" aria-label="Основная навигация">
+          <a class="pill pill--primary" href="index.html" aria-current="page">Кейсы</a>
+          <a class="pill pill--secondary" href="#about">Обо мне</a>
+          <button class="pill pill--secondary" type="button" data-contact="cv">Скачать CV</button>
+        </nav>
 
-    <!-- ===== HEADER ===== -->
-    <header class="header" id="header">
-        <div class="header-inner">
+        <div class="profile" id="about">
+          <div class="placeholder profile__photo" role="img" aria-label="Место для фотографии автора">
+            <span>[PHOTO]</span>
+          </div>
+          <h1 class="profile__name">Анастасия Плаксина</h1>
+          <p class="profile__description">
+            Проектирую интерфейсы с нуля:<br>
+            от исследований и сценариев<br>
+            до передачи макетов в разработку<br>
+            и построения дизайн-систем.
+          </p>
+        </div>
+      </div>
 
-            <!-- Left block: только ссылки (brand удалён) -->
-            <div class="header-left">
-                <button class="lang-toggle-mobile" id="langToggleMobile">RU</button>
-                <nav class="nav-left">
-                    <a href="#" class="nav-link" data-action="cv">CV</a>
-                    <a href="#" class="nav-link" data-action="hh">HH</a>
-                    <a href="#" class="nav-link" data-action="dprofile">Dprofile</a>
-                </nav>
+      <div class="socials" aria-label="Контакты">
+        <button class="pill pill--secondary social" type="button" data-contact="telegram" aria-label="Telegram">TG</button>
+        <button class="pill pill--secondary social" type="button" data-contact="max" aria-label="MAX">MAX</button>
+        <button class="pill pill--secondary social" type="button" data-contact="email" aria-label="Электронная почта">EMAIL</button>
+      </div>
+    </aside>
+
+    <main class="content" id="projects" aria-label="Проекты">
+      <div class="projects-grid">
+        <a class="project-card" href="case.html" aria-label="Открыть кейс ОРАКУЛ-М">
+          <div class="project-card__cover">
+            <div class="placeholder project-card__image" aria-hidden="true">[PROJECT COVER]</div>
+            <span class="project-card__arrow" aria-hidden="true">↗</span>
+          </div>
+          <div class="project-card__details">
+            <div class="project-card__heading">
+              <h2 class="project-card__title">ОРАКУЛ-М (MVP)</h2>
+              <span class="project-card__year">2025</span>
             </div>
-            
-            <!-- Right block: social + lang -->
-            <div class="header-right">
-                <nav class="nav-right">
-                    <a href="#" class="nav-link" data-action="telegram">Telegram</a>
-                    <a href="#" class="nav-link" data-action="max">Max</a>
-                    <a href="#" class="nav-link" data-action="email">Email</a>
-                    <button class="lang-toggle" id="langToggle">RU</button>
-                </nav>
-                <!-- Hamburger (mobile) -->
-                <button class="hamburger" id="hamburger" aria-label="Меню">
-                <img src="images/menu-icon.svg" alt="Открыть меню" />
-                </button>
+            <p class="project-card__description">Система визуализации данных</p>
+            <div class="project-card__tags" aria-label="Категории проекта">
+              <span class="tag">Продуктовый дизайн</span>
+              <span class="tag">MVP</span>
             </div>
-
-        </div>
-    </header>
-
-    <!-- ===== MOBILE MENU OVERLAY ===== -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-inner">
-            <div class="mobile-menu-inner">
-            <button class="mobile-close" id="mobileClose">
-            <img src="images/close-icon.svg" alt="Закрыть меню" />
-            </button>
-            <nav class="mobile-nav">
-            <!-- ссылки остаются без изменений -->
-             </nav>
-        </div>         
-            <nav class="mobile-nav">
-                <a href="#" class="mobile-nav-link" data-action="cv">CV</a>
-                <a href="#" class="mobile-nav-link" data-action="hh">HH</a>
-                <a href="#" class="mobile-nav-link" data-action="dprofile">Dprofile</a>
-                <a href="#" class="mobile-nav-link" data-action="telegram">Telegram</a>
-                <a href="#" class="mobile-nav-link" data-action="max">Max</a>
-                <a href="#" class="mobile-nav-link" data-action="email">Email</a>
-            </nav>
-        </div>
-    </div>
-
-    <!-- ===== HERO ===== -->
-<section class="hero">
-    <div class="container hero-container">
-        <div class="hero-content">
-            <img src="images/avatar.png" alt="Анастасия Плаксина" class="hero-avatar" />
-            <h1 class="hero-title">Анастасия Плаксина</h1>
-            <p class="hero-desc">
-                Проектирую интерфейсы с&nbsp;нуля: от&nbsp;исследований и&nbsp;сценариев
-                до&nbsp;передачи макетов в&nbsp;разработку и&nbsp;построения дизайн-систем.
-            </p>
-            <p class="hero-desc">
-                До&nbsp;дизайна работала в&nbsp;автоматизации технологических процессов,
-                где также имела дело с&nbsp;«пользовательским опытом»: проектировала мнемосхемы
-                и&nbsp;адаптировала интерфейсы промышленного оборудования. Этот опыт дал мне
-                уникальный навык — вникать в&nbsp;сложные процессы и&nbsp;проектировать решения
-                под&nbsp;рабочие задачи.
-            </p>
-        </div>
-    </div>
-</section>
-
-    <!-- ===== PROJECTS ===== -->
-    <section class="projects">
-        <div class="container">
-            <div class="projects-grid">
-
-                <!-- Card 1 -->
-                <article class="project-card">
-                    <div class="card-image">
-                        <img src="images/globus-lk.png" alt="ГЛОБУС · ЛИЧНЫЙ КАБИНЕТ" loading="lazy" />
-                    </div>
-                    <div class="card-body">
-                        <span class="card-tag">Coming soon</span>
-                        <h3 class="card-title">ГЛОБУС · ЛИЧНЫЙ КАБИНЕТ</h3>
-                        <p class="card-desc">Кабинет управления системой</p>
-                        <span class="card-year">2026</span>
-                    </div>
-                </article>
-
-                <!-- Card 2 -->
-                   <a href="case-dashboards.html" class="project-card-link">
-                    <article class="project-card">
-                    <div class="card-image">
-            <img src="images/dashboards.jpg" alt="ДАШБОРДЫ ДЛЯ РОССОТРУДНИЧЕСТВА" loading="lazy" />
-        </div>
-        <div class="card-body">
-            <span class="card-tag">Coming soon</span>
-            <h3 class="card-title">ДАШБОРДЫ ДЛЯ РОССОТРУДНИЧЕСТВА</h3>
-            <p class="card-desc">Интерактивные дашборды (MVP)</p>
-            <span class="card-year">2026</span>
-        </div>
-        </article>
+          </div>
         </a>
 
-                <!-- Card 3 -->
-                <article class="project-card">
-                    <div class="card-image">
-                        <img src="images/globus-viz.png" alt="ГЛОБУС · ВИЗУАЛИЗАТОР" loading="lazy" />
-                    </div>
-                    <div class="card-body">
-                        <span class="card-tag">Coming soon</span>
-                        <h3 class="card-title">ГЛОБУС · ВИЗУАЛИЗАТОР</h3>
-                        <p class="card-desc">Система визуализации графов</p>
-                        <span class="card-year">2026</span>
-                    </div>
-                </article>
-
-                <!-- Card 4 -->
-                <article class="project-card">
-                    <div class="card-image">
-                        <img src="images/oracle-m.png" alt="ОРАКУЛ - М" loading="lazy" />
-                    </div>
-                    <div class="card-body">
-                        <span class="card-tag">Coming soon</span>
-                        <h3 class="card-title">ОРАКУЛ - М</h3>
-                        <p class="card-desc">Система визуализации данных</p>
-                        <span class="card-year">2025</span>
-                    </div>
-                </article>
-
+        <article class="project-card project-card--upcoming" aria-label="Будущий проект 2">
+          <div class="project-card__cover">
+            <div class="placeholder project-card__image" role="img" aria-label="Место для обложки проекта">[PROJECT COVER]</div>
+          </div>
+          <div class="project-card__details">
+            <div class="project-card__heading">
+              <h2 class="project-card__title">Новый проект</h2>
+              <span class="project-card__year">Скоро</span>
             </div>
-        </div>
-    </section>
+            <p class="project-card__description">Описание проекта появится здесь</p>
+            <div class="project-card__tags">
+              <span class="tag">Кейс готовится</span>
+            </div>
+          </div>
+        </article>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <div class="container">
-            <p class="footer-text">2026 Version 1.0</p>
-        </div>
-    </footer>
+        <article class="project-card project-card--upcoming" aria-label="Будущий проект 3">
+          <div class="project-card__cover">
+            <div class="placeholder project-card__image" role="img" aria-label="Место для обложки проекта">[PROJECT COVER]</div>
+          </div>
+          <div class="project-card__details">
+            <div class="project-card__heading">
+              <h2 class="project-card__title">Новый проект</h2>
+              <span class="project-card__year">Скоро</span>
+            </div>
+            <p class="project-card__description">Описание проекта появится здесь</p>
+            <div class="project-card__tags">
+              <span class="tag">Кейс готовится</span>
+            </div>
+          </div>
+        </article>
 
-    <script src="script.js"></script>
+        <article class="project-card project-card--upcoming" aria-label="Будущий проект 4">
+          <div class="project-card__cover">
+            <div class="placeholder project-card__image" role="img" aria-label="Место для обложки проекта">[PROJECT COVER]</div>
+          </div>
+          <div class="project-card__details">
+            <div class="project-card__heading">
+              <h2 class="project-card__title">Новый проект</h2>
+              <span class="project-card__year">Скоро</span>
+            </div>
+            <p class="project-card__description">Описание проекта появится здесь</p>
+            <div class="project-card__tags">
+              <span class="tag">Кейс готовится</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+
+  <div class="notice" id="contact-notice" role="status" aria-live="polite" hidden></div>
 </body>
 </html>
