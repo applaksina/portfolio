@@ -430,7 +430,7 @@ a.project-card:focus-visible .project-card__title {
 .case__title {
   margin: 0;
   color: var(--color-primary);
-  font-size: 36px;
+  font-size: 34px;
   font-weight: 500;
   line-height: 1.15;
 }
