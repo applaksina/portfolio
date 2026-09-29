@@ -266,12 +266,12 @@ a {
 }
 
 /* ===== СЕТКА КАРТОЧЕК =====
-   Две колонки, карточки сжимаются по ширине (1fr).
+   Две колонки. Зазор между карточками по горизонтали и по вертикали — 24px.
    Снизу 24px — чтобы при прокрутке до конца остался отступ. */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 38px var(--space-card-gap);
+  gap: var(--space-card-gap); /* было: 38px var(--space-card-gap) */
   padding-bottom: 24px;
 }
 
