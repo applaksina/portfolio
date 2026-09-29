@@ -30,7 +30,7 @@
      Макет 1440px: слева колонка 421px, справа две карточки ~422px,
      между колонками 24px. Поля страницы: 64px по бокам, 48px сверху, 24px снизу. */
   --space-page-top: 48px;      /* отступ сверху всей страницы */
-  --space-page-bottom: 24px;   /* отступ снизу всей страницы */
+ 
   --space-page-x: 64px;        /* боковые отступы страницы */
   --space-sidebar: 421px;      /* ширина левой колонки */
   --space-columns: 24px;       /* зазор между левой колонкой и карточками */
@@ -84,7 +84,8 @@ a {
 
 /* ===== ОБЩАЯ СЕТКА СТРАНИЦЫ =====
    Две колонки: слева сайдбар 421px, справа — контент.
-   Отступ сверху 48px, снизу 24px, по бокам 64px. */
+   Отступ сверху 48px, по бокам 64px. Снизу отступ убран (0),
+   он остался только у левого блока (см. .sidebar). */
 .page {
   display: grid;
   grid-template-columns: var(--space-sidebar) minmax(0, 1fr);
@@ -92,17 +93,19 @@ a {
   width: 100%;
   height: 100vh;
   height: 100dvh;
-  padding: var(--space-page-top) var(--space-page-x) var(--space-page-bottom);
+  padding: var(--space-page-top) var(--space-page-x) 0; /* было: ... var(--space-page-bottom) */
 }
 
-/* ===== ЛЕВАЯ КОЛОНКА ===== */
+/* ===== ЛЕВАЯ КОЛОНКА =====
+   Нижний отступ 24px — только у сайдбара, чтобы его содержимое
+   не прилипало к краю окна. */
 .sidebar {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-width: 0;
   min-height: 0;
-  padding-bottom: 4px;
+  padding-bottom: 24px; /* было: 4px */
 }
 
 /* ===== КНОПКИ (Кейсы / Обо мне / Скачать CV) ===== */
