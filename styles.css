@@ -378,9 +378,7 @@ a.project-card:focus-visible .project-card__arrow {
   transform: translate(0);
 }
 
-/* Нижний блок карточки: название + описание
-   Раскладываем в колонку с отступом 4px между элементами.
-   Внутренние отступы со всех сторон — 12px. */
+/* Нижний блок карточки */
 .project-card__details {
   display: flex;
   flex-direction: column;
@@ -418,15 +416,6 @@ a.project-card:focus-visible .project-card__title {
   font-weight: 400;
   line-height: 24px;
 }
-
-.project-card--upcoming .project-card__image {
-  background: #ebebeb;
-}
-
-.project-card--upcoming .project-card__title {
-  color: #55595d;
-}
-
 
 /* ============================================================
    9. СТРАНИЦА КЕЙСА
