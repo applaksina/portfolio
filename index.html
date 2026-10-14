@@ -15,30 +15,23 @@
 <body>
   <div class="page">
     <aside class="sidebar" aria-label="Информация об авторе">
-      <div class="sidebar__top">
-        <nav class="navigation" aria-label="Основная навигация">
-          <a class="pill pill--primary" href="index.html" aria-current="page">Кейсы</a>
-          <a class="pill pill--secondary" href="#about">Обо мне</a>
-          <button class="pill pill--secondary" type="button" data-contact="cv">Скачать CV</button>
-        </nav>
+     <!-- ВЕРХ: имя + описание -->
+<div class="profile" id="about">
+  <h1 class="profile__name">Анастасия Плаксина</h1>
+  <p class="profile__description">
+    Проектирую интерфейсы с нуля:<br>
+    от исследований и сценариев<br>
+    до передачи макетов в разработку<br>
+    и построения дизайн-систем.
+  </p>
+</div>
 
-        <div class="profile" id="about">
-          
-          <h1 class="profile__name">Анастасия Плаксина</h1>
-          <p class="profile__description">
-            Проектирую интерфейсы с нуля:<br>
-            от исследований и сценариев<br>
-            до передачи макетов в разработку<br>
-            и построения дизайн-систем.
-          </p>
-        </div>
-      </div>
-
-      <div class="socials" aria-label="Контакты">
-        <button class="pill pill--secondary social" type="button" data-contact="telegram" aria-label="Telegram">TG</button>
-        <button class="pill pill--secondary social" type="button" data-contact="max" aria-label="MAX">MAX</button>
-        <button class="pill pill--secondary social" type="button" data-contact="email" aria-label="Электронная почта">EMAIL</button>
-      </div>
+<!-- НИЗ: три кнопки друг под другом -->
+<nav class="navigation" aria-label="Контакты">
+  <button class="pill" type="button" data-contact="cv">Скачать CV</button>
+  <a class="pill" href="https://t.me/ap_plaksina" target="_blank" rel="noopener">Написать в TG</a>
+  <a class="pill" href="mailto:ap.plaksina@mail.ru">Написать Email</a>
+</nav>
     </aside>
 
     <main class="content" id="projects" aria-label="Проекты">
