@@ -1,3 +1,22 @@
+/* ============================================================
+   СОДЕРЖАНИЕ
+   ------------------------------------------------------------
+   1. Переменные (:root)
+   2. Сброс и базовая типографика
+   3. Общая сетка страницы (.page)
+   4. Левая колонка (.sidebar) и кнопки (.pill)
+   5. Профиль (фото, имя, описание)
+   6. Соцсети
+   7. Правая колонка контента (.content)
+   8. Сетка карточек кейсов (.projects-grid, .project-card)
+   9. Страница кейса (.case)
+  10. Адаптив и предпочтения пользователя
+   ============================================================ */
+
+
+/* ============================================================
+   1. ПЕРЕМЕННЫЕ
+   ============================================================ */
 :root {
   /* ===== ЦВЕТА ===== */
   --color-background: #ffffff;
@@ -28,13 +47,13 @@
 
   /* ===== СЕТКА И ОТСТУПЫ =====
      Макет 1440px: слева колонка 421px, справа две карточки ~422px,
-     между колонками 24px. Поля страницы: 64px по бокам, 48px сверху, 24px снизу. */
-  --space-page-top: 48px;      /* отступ сверху всей страницы */
- 
-  --space-page-x: 64px;        /* боковые отступы страницы */
-  --space-sidebar: 421px;      /* ширина левой колонки */
-  --space-columns: 24px;       /* зазор между левой колонкой и карточками */
-  --space-card-gap: 24px;      /* зазор между карточками */
+     между колонками 24px. Поля страницы: 64px по бокам, 48px сверху,
+     24px снизу. */
+  --space-page-top: 48px;
+  --space-page-x: 64px;
+  --space-sidebar: 421px;
+  --space-columns: 24px;
+  --space-card-gap: 24px;
 
   --radius-small: 10px;
   --radius-medium: 14px;
@@ -45,6 +64,10 @@
   --transition-medium: 280ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
+
+/* ============================================================
+   2. СБРОС И БАЗОВАЯ ТИПОГРАФИКА
+   ============================================================ */
 * {
   box-sizing: border-box;
 }
@@ -82,10 +105,11 @@ a {
   outline-offset: 4px;
 }
 
-/* ===== ОБЩАЯ СЕТКА СТРАНИЦЫ =====
+
+/* ============================================================
+   3. ОБЩАЯ СЕТКА СТРАНИЦЫ
    Две колонки: слева сайдбар 421px, справа — контент.
-   Отступ сверху 48px, по бокам 64px. Снизу отступ убран (0),
-   он остался только у левого блока (см. .sidebar). */
+   ============================================================ */
 .page {
   display: grid;
   grid-template-columns: var(--space-sidebar) minmax(0, 1fr);
@@ -93,22 +117,23 @@ a {
   width: 100%;
   height: 100vh;
   height: 100dvh;
-  padding: var(--space-page-top) var(--space-page-x) 0; /* было: ... var(--space-page-bottom) */
+  padding: var(--space-page-top) var(--space-page-x) 0;
 }
 
-/* ===== ЛЕВАЯ КОЛОНКА =====
-   Нижний отступ 24px — только у сайдбара, чтобы его содержимое
-   не прилипало к краю окна. */
+
+/* ============================================================
+   4. ЛЕВАЯ КОЛОНКА И КНОПКИ
+   ============================================================ */
 .sidebar {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-width: 0;
   min-height: 0;
-  padding-bottom: 24px; /* было: 4px */
+  padding-bottom: 24px;
 }
 
-/* ===== КНОПКИ (Кейсы / Обо мне / Скачать CV) ===== */
+/* Кнопки (Кейсы / Обо мне / Скачать CV) */
 .navigation {
   display: flex;
   align-items: center;
@@ -188,7 +213,10 @@ a {
   transform: translateY(-2px);
 }
 
-/* ===== БЛОК ПРОФИЛЯ (фото + имя + краткое инфо) ===== */
+
+/* ============================================================
+   5. ПРОФИЛЬ (ФОТО + ИМЯ + КРАТКОЕ ОПИСАНИЕ)
+   ============================================================ */
 .profile {
   margin-top: 38px;
   scroll-margin-top: 24px;
@@ -218,26 +246,30 @@ a {
   letter-spacing: 0;
 }
 
-/* Имя — Inter Medium 22 / auto */
+/* Имя — Inter Medium 22 / auto, цвет #141213 */
 .profile__name {
   margin: 12px 0 10px;
   font-family: var(--font-ui);
   font-size: 22px;
   font-weight: 500;
   line-height: normal;
+  color: #141213;
 }
 
-/* Краткое инфо под именем — Inter Regular 16 / 20 */
+/* Краткое описание — Inter Regular 16 / 20, цвет #444444 */
 .profile__description {
   margin: 0;
-  color: #44484b;
+  color: #444444;
   font-family: var(--font-ui);
   font-size: 16px;
   font-weight: 400;
   line-height: 20px;
 }
 
-/* ===== СОЦСЕТИ ===== */
+
+/* ============================================================
+   6. СОЦСЕТИ
+   ============================================================ */
 .socials {
   display: flex;
   flex-direction: column;
@@ -249,32 +281,33 @@ a {
   min-width: 54px;
 }
 
-/* ===== КОНТЕНТ (правая часть, скроллится) =====
-   Скрываем полоску скролла, но скролл сохраняется. */
+
+/* ============================================================
+   7. ПРАВАЯ КОЛОНКА КОНТЕНТА
+   ============================================================ */
 .content {
   min-width: 0;
   min-height: 0;
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior-y: contain;
-  /* Firefox: полностью прячем скроллбар */
-  scrollbar-width: none;
+  scrollbar-width: none; /* Firefox: скрыть полоску скролла */
 }
 
-/* Chrome / Safari / Edge: полностью прячем скроллбар */
 .content::-webkit-scrollbar {
   width: 0;
   height: 0;
-  display: none;
+  display: none; /* Chrome / Safari / Edge: скрыть полоску скролла */
 }
 
-/* ===== СЕТКА КАРТОЧЕК =====
-   Две колонки. Зазор между карточками по горизонтали и по вертикали — 24px.
-   Снизу 24px — чтобы при прокрутке до конца остался отступ. */
+
+/* ============================================================
+   8. СЕТКА КАРТОЧЕК КЕЙСОВ
+   ============================================================ */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-card-gap); /* было: 38px var(--space-card-gap) */
+  gap: var(--space-card-gap);
   padding-bottom: 24px;
 }
 
@@ -345,24 +378,29 @@ a.project-card:focus-visible .project-card__arrow {
   transform: translate(0);
 }
 
+/* Нижний блок карточки: название + описание
+   Раскладываем в колонку с отступом 4px между элементами.
+   Внутренние отступы со всех сторон — 12px. */
 .project-card__details {
-  padding: 12px 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
 }
 
 .project-card__heading {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 10px;
+  display: block;
 }
 
-/* Название кейса — Inter Regular 20 / 24 */
+/* Название кейса — Inter Regular Uppercase 20 / 24, цвет #141213 */
 .project-card__title {
   margin: 0;
   font-family: var(--font-ui);
   font-size: 20px;
   font-weight: 400;
   line-height: 24px;
+  text-transform: uppercase;
+  color: #141213;
   transition: color var(--transition-fast);
 }
 
@@ -371,18 +409,15 @@ a.project-card:focus-visible .project-card__title {
   color: var(--color-accent);
 }
 
-/* Описание кейса — Inter Regular 18 / 24 */
+/* Описание кейса — Inter Regular 18 / 24, цвет #919191 */
 .project-card__description {
-  margin: 4px 0 0;
-  color: var(--color-muted);
+  margin: 0;
+  color: #919191;
   font-family: var(--font-ui);
   font-size: 18px;
   font-weight: 400;
   line-height: 24px;
 }
-
-/* Стили .project-card__year, .project-card__tags и .tag удалены —
-   год и бейджи больше не выводятся на карточке. */
 
 .project-card--upcoming .project-card__image {
   background: #ebebeb;
@@ -392,7 +427,10 @@ a.project-card:focus-visible .project-card__title {
   color: #55595d;
 }
 
-/* ===== СТРАНИЦА КЕЙСА (осталась без изменений) ===== */
+
+/* ============================================================
+   9. СТРАНИЦА КЕЙСА
+   ============================================================ */
 .case {
   padding-bottom: 75px;
 }
@@ -788,6 +826,10 @@ a.project-card:focus-visible .project-card__title {
   display: none;
 }
 
+
+/* ============================================================
+   10. АДАПТИВ И ПРЕДПОЧТЕНИЯ ПОЛЬЗОВАТЕЛЯ
+   ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
