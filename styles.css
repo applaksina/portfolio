@@ -328,11 +328,16 @@ a.project-card:hover {
   transform: translateY(-6px);
 }
 
-/* Обложка карточки: фиксированная высота 550px */
+/* Обложка карточки */
 .project-card__cover {
   position: relative;
   overflow: hidden;
-  height: 550px;
+  /* Высота обложки подстраивается под экран так, чтобы второй ряд
+     карточек всегда выглядывал примерно на 12–15%.
+     Формула: (высота окна − отступ сверху − зазор между рядами) / 1.125 − высота текстового блока.
+     Хотите, чтобы выглядывало больше — уменьшите 1.125 (например, до 1.10).
+     Хотите меньше — увеличьте (например, до 1.20). */
+  height: min(550px, calc((100vh - 72px) / 1.125 - 76px));
   border-radius: var(--radius-large);
   background: var(--color-placeholder);
   transition: box-shadow var(--transition-medium);
