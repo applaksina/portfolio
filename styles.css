@@ -593,7 +593,7 @@ a.project-card:hover .project-card__image {
   border-radius: 12px;
   background: var(--color-badge-bg);
   color: var(--color-badge-text);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
   white-space: nowrap;
