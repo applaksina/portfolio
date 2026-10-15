@@ -138,9 +138,6 @@ a {
 
 /* ============================================================
    5. ПРОФИЛЬ (ИМЯ + ОПИСАНИЕ)
-   На обеих страницах есть обёртка .sidebar__header.
-   Резерв под кнопку «К кейсам» создаётся через padding-top:
-   он не схлопывается и не зависит от того, есть ли кнопка.
    ============================================================ */
 
 /* Стек по вертикали: кнопка сверху, профиль снизу, зазор 24px. */
@@ -151,12 +148,11 @@ a {
   gap: 24px;
 }
 
-/* Кнопка «К кейсам».
-   Отдельных стилей не требует — базовый .pill уже всё задаёт.
-   Здесь только на случай, если позже захотите что-то докрутить. */
+/* Кнопка «К кейсам» — базовый .pill уже всё задаёт. */
 .pill--back {
   /* пусто — оставляем для явности */
 }
+
 /* Призрачная кнопка для главной страницы.
    Занимает то же место, что и обычная, но невидима
    и не участвует в кликах / фокусе. */
@@ -237,7 +233,7 @@ a {
   justify-content: center;
   padding: 4px 16px;
   border: 1px solid var(--color-pill-border);
-  border-radius: var(--radius-pill); /* 10px */
+  border-radius: var(--radius-pill);
   background: linear-gradient(var(--color-pill-fill), var(--color-pill-fill)) no-repeat 0 0;
   background-size: 0% 100%;
   color: var(--color-pill-text);
@@ -376,24 +372,16 @@ a.project-card:hover .project-card__image {
 /* ============================================================
    9. СТРАНИЦА КЕЙСА
    ============================================================ */
-.case {
-  padding-bottom: 75px;
-}
-/* ============================================================
-   ШИРИНА КОНТЕНТА НА СТРАНИЦЕ КЕЙСА
-   Весь текстовый контент занимает 75% ширины правой колонки:
-   заголовки, абзацы, списки, блоки инсайтов и сторис,
-   тёмная панель с гипотезами.
-   На всю ширину остаются только превью:
-   hero-обложка, user flow, галерея макетов.
-   ============================================================ */
 
-/* Переменная — точка настройки. Хотите уже — 66%, шире — 85%. */
+/* Общий контейнер + переменная ширины текстового контента.
+   Текст занимает 75% ширины правой колонки.
+   Превью (hero, user flow, галерея) — на всю ширину. */
 .case {
   --text-width: 75%;
+  padding-bottom: 80px;
 }
 
-/* Всё, что относится к тексту — ограничено 75% */
+/* Текстовые блоки — 75% ширины */
 .case__title,
 .case-section > p,
 .case-section > .case-list,
@@ -413,6 +401,8 @@ a.project-card:hover .project-card__image {
 .gallery {
   max-width: 100%;
 }
+
+/* ===== Верхняя обложка кейса ===== */
 .case__hero {
   position: relative;
   width: 100%;
@@ -424,13 +414,13 @@ a.project-card:hover .project-card__image {
 .case__hero-tags {
   position: absolute;
   top: 20px;
-  right: 22px;
+  right: 20px;
   display: flex;
-  gap: 9px;
+  gap: 8px;
 }
 
 .hero-tag {
-  padding: 8px 15px;
+  padding: 8px 16px;
   border: 1px solid rgb(255 255 255 / 85%);
   border-radius: 999px;
   color: #565a5d;
@@ -439,8 +429,9 @@ a.project-card:hover .project-card__image {
   letter-spacing: 0;
 }
 
+/* ===== Шапка с названием кейса ===== */
 .case__header {
-  margin: 47px 0 25px;
+  margin: 48px 0 24px;
 }
 
 .case__title {
@@ -451,8 +442,9 @@ a.project-card:hover .project-card__image {
   line-height: 1.15;
 }
 
+/* ===== Секции кейса ===== */
 .case-section {
-  margin-top: 44px;
+  margin-top: 48px;
   font-size: var(--font-size-body);
   line-height: 1.31;
 }
@@ -466,11 +458,11 @@ a.project-card:hover .project-card__image {
 }
 
 .case-section p {
-  margin: 0 0 18px;
+  margin: 0 0 20px;
 }
 
 .section-label {
-  margin: 0 0 19px;
+  margin: 0 0 20px;
   color: var(--color-muted);
   font-size: 16px;
   font-weight: 400;
@@ -478,17 +470,18 @@ a.project-card:hover .project-card__image {
   text-transform: uppercase;
 }
 
+/* ===== Блок «фактов» (Команда, Моя роль) ===== */
 .case-facts,
 .result-facts {
-  margin: 22px 0 0;
+  margin: 24px 0 0;
 }
 
 .case-facts > div,
 .result-facts > div {
   display: grid;
   grid-template-columns: 138px minmax(0, 1fr);
-  gap: 10px;
-  margin-top: 7px;
+  gap: 12px;
+  margin-top: 8px;
 }
 
 .case-facts dt,
@@ -501,9 +494,10 @@ a.project-card:hover .project-card__image {
   margin: 0;
 }
 
+/* ===== Списки ===== */
 .case-list {
   margin: 0;
-  padding-left: 30px;
+  padding-left: 32px;
 }
 
 .case-list li {
@@ -515,13 +509,14 @@ a.project-card:hover .project-card__image {
   margin-bottom: 0;
 }
 
+/* ===== Карточки инсайтов и сторис ===== */
 .note-list {
   display: grid;
   gap: 16px;
 }
 
 .note {
-  padding: 21px 20px 20px;
+  padding: 20px;
   border-radius: var(--radius-medium);
   background: var(--color-surface);
 }
@@ -544,17 +539,21 @@ a.project-card:hover .project-card__image {
   color: #30374e;
 }
 
+/* ===== Блок User Flow ===== */
 .case__flow {
   width: 100%;
   height: 530px;
-  margin-top: 44px;
+  margin-top: 48px;
   border: 1px solid #dedede;
   border-radius: var(--radius-medium);
   background: #f0f0f0;
 }
 
+/* ===== Тёмная панель с гипотезами =====
+   Внешний padding 20px — как у .note, чтобы текст в блоках
+   начинался на одной вертикали. */
 .testing-panel {
-  padding: 27px;
+  padding: 20px;
   border-radius: 18px;
   background: var(--color-dark-panel);
   color: var(--color-dark-text);
@@ -566,11 +565,11 @@ a.project-card:hover .project-card__image {
 .hypothesis {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
+  gap: 20px;
 }
 
 .testing-panel__head {
-  padding: 0 0 15px;
+  padding: 0 0 16px;
   color: #b9b9b9;
   font-size: 15px;
   text-transform: uppercase;
@@ -588,7 +587,7 @@ a.project-card:hover .project-card__image {
 }
 
 .hypothesis p {
-  margin: 0 0 10px;
+  margin: 0 0 12px;
 }
 
 .hypothesis p:last-child {
@@ -598,8 +597,8 @@ a.project-card:hover .project-card__image {
 .hypothesis__badge {
   display: table;
   width: fit-content;
-  padding: 5px 8px;
-  margin-top: 22px;
+  padding: 4px 8px;
+  margin-top: 24px;
   border-radius: 999px;
   background: var(--color-success);
   color: var(--color-success-text);
@@ -609,13 +608,14 @@ a.project-card:hover .project-card__image {
 }
 
 .testing-panel__observation {
-  margin: 0 5px 16px !important;
+  margin: 0 0 16px !important;
   color: #60bc9b;
   font-size: 12px;
   line-height: 1.4;
   text-transform: uppercase;
 }
 
+/* ===== Галерея макетов ===== */
 .gallery__stage {
   position: relative;
   width: 100%;
@@ -700,13 +700,13 @@ a.project-card:hover .project-card__image {
   bottom: 20px;
   left: 50%;
   display: flex;
-  gap: 7px;
+  gap: 8px;
   transform: translateX(-50%);
 }
 
 .gallery__dot {
-  width: 11px;
-  height: 11px;
+  width: 12px;
+  height: 12px;
   padding: 0;
   border: 0;
   border-radius: 50%;
@@ -727,24 +727,26 @@ a.project-card:hover .project-card__image {
 }
 
 .gallery__caption {
-  margin: 18px 0 0 !important;
+  margin: 20px 0 0 !important;
   font-size: 19px;
   font-style: italic;
   text-align: center;
 }
 
+/* ===== Блок результата ===== */
 .result-facts {
   margin-top: 20px;
 }
 
 .result-facts > div {
-  margin-top: 18px;
+  margin-top: 20px;
 }
 
 .result-facts .case-list {
-  padding-left: 30px;
+  padding-left: 32px;
 }
 
+/* ===== Лайтбокс для галереи ===== */
 .lightbox {
   width: min(1100px, calc(100vw - 80px));
   max-width: none;
@@ -779,19 +781,20 @@ a.project-card:hover .project-card__image {
 }
 
 .lightbox__caption {
-  margin: 14px 0 0;
+  margin: 16px 0 0;
   color: var(--color-secondary);
   font-size: 16px;
   text-align: center;
 }
 
+/* ===== Всплывающее уведомление ===== */
 .notice {
   position: fixed;
   z-index: 10;
   bottom: 24px;
   left: 24px;
   max-width: 340px;
-  padding: 14px 18px;
+  padding: 16px 20px;
   border-radius: var(--radius-medium);
   background: var(--color-primary);
   box-shadow: 0 10px 25px rgb(0 0 0 / 20%);
