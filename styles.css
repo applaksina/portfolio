@@ -548,58 +548,607 @@ a.project-card:hover .project-card__image {
   border: 1px solid #dedede;
   border-radius: var(--radius-medium);
   background: #f0f0f0;
+/* ============================================================
+   СОДЕРЖАНИЕ
+   ------------------------------------------------------------
+   1. Переменные (:root)
+   2. Сброс и базовая типографика
+   3. Общая сетка страницы (.page)
+   4. Левая колонка (.sidebar)
+   5. Профиль (имя + описание)
+   6. Кнопки (.pill)
+   7. Правая колонка контента (.content)
+   8. Сетка карточек кейсов (.projects-grid, .project-card)
+   9. Страница кейса (.case)
+  10. Адаптив и предпочтения пользователя
+   ============================================================ */
+
+
+/* ============================================================
+   1. ПЕРЕМЕННЫЕ
+   ============================================================ */
+:root {
+  /* ===== ЦВЕТА ===== */
+  --color-background: #ffffff;
+  --color-text: #242424;
+  --color-secondary: #62676b;
+  --color-muted: #898d90;
+  --color-border: #dddddd;
+  --color-surface: #f3f4f5;
+  --color-placeholder: #e5e5e5;
+  --color-placeholder-text: #777b7e;
+  --color-primary: #191919;
+  --color-primary-hover: #393939;
+  --color-accent: #405e9b;
+  --color-focus: #4669c9;
+  --color-dark-panel: #292929;
+  --color-dark-card: #3a3a3a;
+  --color-dark-text: #eeeeee;
+  --color-success: #d8fff0;
+  --color-success-text: #175b47;
+
+  /* Новые цвета для кнопок и текста */
+  --color-pill-border: #DFE0DC;   /* обводка кнопки */
+  --color-pill-text: #444444;     /* текст кнопки */
+  --color-pill-fill: #DFE0DC;     /* заливка кнопки при ховере */
+
+  /* ===== ШРИФТЫ ===== */
+  --font-main: Arial, Helvetica, sans-serif;
+  --font-ui: 'Inter', Arial, Helvetica, sans-serif;
+  --font-size-body: 20px;
+  --font-size-small: 15px;
+
+  /* ===== СЕТКА И ОТСТУПЫ ===== */
+  --space-page-top: 48px;
+  --space-page-x: 64px;
+  --space-sidebar: 421px;
+  --space-columns: 24px;
+  --space-card-gap: 24px;
+
+  --radius-small: 10px;
+  --radius-medium: 14px;
+  --radius-large: 20px;
+  --radius-pill: 10px;
+
+  --transition-fast: 220ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  --transition-medium: 280ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-/* ===== Тёмная панель с гипотезами =====
-   Внешний padding 20px — как у .note, чтобы текст в блоках
-   начинался на одной вертикали. */
-.testing-panel {
-  padding: 20px;
-  border-radius: 18px;
-  background: var(--color-dark-panel);
-  color: var(--color-dark-text);
+
+/* ============================================================
+   2. СБРОС И БАЗОВАЯ ТИПОГРАФИКА
+   ============================================================ */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-width: 1120px;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+  text-wrap: pretty;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 4px;
+}
+
+
+/* ============================================================
+   3. ОБЩАЯ СЕТКА СТРАНИЦЫ
+   Две колонки: слева сайдбар 421px, справа — контент.
+   ============================================================ */
+.page {
+  display: grid;
+  grid-template-columns: var(--space-sidebar) minmax(0, 1fr);
+  gap: var(--space-columns);
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  padding: var(--space-page-top) var(--space-page-x) 0;
+}
+
+
+/* ============================================================
+   4. ЛЕВАЯ КОЛОНКА
+   Сверху — профиль, снизу — кнопки. Между ними воздух.
+   Нижний отступ 24px — чтобы кнопки не прилипали к краю окна.
+   ============================================================ */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  min-height: 0;
+  padding-bottom: 24px;
+}
+
+
+/* ============================================================
+   5. ПРОФИЛЬ (ИМЯ + ОПИСАНИЕ)
+   ============================================================ */
+
+/* Стек по вертикали: кнопка сверху, профиль снизу, зазор 24px. */
+.sidebar__header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+/* Кнопка «К кейсам» — базовый .pill уже всё задаёт. */
+.pill--back {
+  /* пусто — оставляем для явности */
+}
+
+/* Призрачная кнопка для главной страницы.
+   Занимает то же место, что и обычная, но невидима
+   и не участвует в кликах / фокусе. */
+.pill--back--ghost {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Профиль — просто блок, никаких margin-top.
+   Позиция определяется flex-контейнером .sidebar__header. */
+.profile {
+  scroll-margin-top: 24px;
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--color-placeholder);
+  color: var(--color-placeholder-text);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-align: center;
+}
+
+.profile__photo {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-small);
+}
+
+.profile__photo span {
+  font-size: 9px;
+  letter-spacing: 0;
+}
+
+/* Имя — Inter Medium 22 / auto, цвет #141213 */
+.profile__name {
+  margin: 0 0 10px;
+  font-family: var(--font-ui);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: normal;
+  color: #141213;
+}
+
+/* Описание — Inter Regular 16 / 20, цвет #444444 */
+.profile__description {
+  margin: 0;
+  color: #444444;
+  font-family: var(--font-ui);
   font-size: 16px;
-  line-height: 1.35;
+  font-weight: 400;
+  line-height: 20px;
 }
 
-.testing-panel__head,
-.hypothesis {
+
+/* ============================================================
+   6. КНОПКИ (.pill)
+   Inter Medium 16/20, текст #444444, обводка 1px #DFE0DC.
+   Внутренние отступы: 4px сверху/снизу, 16px по бокам.
+   Ховер: заливка #DFE0DC «втекает» слева, текст темнеет,
+   скругление уходит в 0. Без тени и без сдвига.
+   ============================================================ */
+.navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 16px;
+  border: 1px solid var(--color-pill-border);
+  border-radius: var(--radius-pill);
+  background: linear-gradient(var(--color-pill-fill), var(--color-pill-fill)) no-repeat 0 0;
+  background-size: 0% 100%;
+  color: var(--color-pill-text);
+  font-family: var(--font-ui);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-size 0.45s cubic-bezier(0.65, 0, 0.35, 1),
+    border-radius 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Ховер: только заливка + уходит скругление. Без тени и без сдвига. */
+.pill:hover {
+  background-size: 100% 100%;
+  border-radius: 0;
+  color: #141213;
+  border-color: var(--color-pill-fill);
+}
+
+.pill:active {
+  /* при нажатии ничего дополнительно не делаем */
+}
+
+
+/* ============================================================
+   7. ПРАВАЯ КОЛОНКА КОНТЕНТА
+   Скроллится отдельно, полоска скролла скрыта.
+   ============================================================ */
+.content {
+  min-width: 0;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+}
+
+.content::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+
+/* ============================================================
+   8. СЕТКА КАРТОЧЕК КЕЙСОВ
+   ============================================================ */
+.projects-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
+  gap: var(--space-card-gap);
+  padding-bottom: 24px;
 }
 
-.testing-panel__head {
-  padding: 0 0 16px;
-  color: #b9b9b9;
+.project-card {
+  display: block;
+  min-width: 0;
+  border-radius: var(--radius-large);
+  color: inherit;
+  text-decoration: none;
+}
+
+a.project-card {
+  cursor: pointer;
+}
+
+.project-card__cover {
+  position: relative;
+  overflow: hidden;
+  height: min(550px, calc((100vh - 72px) / 1.125 - 76px));
+  border-radius: 16px;
+  background: var(--color-placeholder);
+  transition: border-radius var(--transition-medium);
+}
+
+/* Ховер: у обложки уходит скругление. Тени нет. */
+a.project-card:hover .project-card__cover {
+  border-radius: 0;
+}
+
+.project-card__image {
+  width: 100%;
+  height: 100%;
+  transition: transform var(--transition-medium);
+}
+
+/* Ховер: картинка лишь чуть увеличивается, фон не меняем. */
+a.project-card:hover .project-card__image {
+  transform: scale(1.045);
+}
+
+/* Нижний блок карточки: название + описание.
+   Flex-колонка, отступ между элементами 4px,
+   внутренние отступы со всех сторон 12px. */
+.project-card__details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+}
+
+.project-card__heading {
+  display: block;
+}
+
+/* Название кейса — Inter Regular Uppercase 20 / 24, цвет #141213 */
+.project-card__title {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: #141213;
+  transition: color var(--transition-fast);
+}
+
+
+/* Описание кейса — Inter Regular 18 / 24, цвет #919191 */
+.project-card__description {
+  margin: 0;
+  color: #919191;
+  font-family: var(--font-ui);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+
+/* ============================================================
+   9. СТРАНИЦА КЕЙСА
+   ============================================================ */
+
+/* Общий контейнер + переменная ширины текстового контента.
+   Текст занимает 75% ширины правой колонки.
+   Превью (hero, user flow, галерея) — на всю ширину. */
+.case {
+  --text-width: 75%;
+  padding-bottom: 80px;
+}
+
+/* Текстовые блоки — 75% ширины */
+.case__title,
+.case-section > p,
+.case-section > .case-list,
+.case-section > .case-facts,
+.case-section > .result-facts,
+.case-section > .note-list,
+.case-section > .testing-panel,
+.case-section > .section-label,
+.gallery__caption,
+.lightbox__caption {
+  max-width: var(--text-width);
+}
+
+/* Превью-блоки — на всю ширину правой колонки */
+.case__hero,
+.case__flow,
+.gallery {
+  max-width: 100%;
+}
+
+/* ===== Верхняя обложка кейса ===== */
+.case__hero {
+  position: relative;
+  width: 100%;
+  height: 356px;
+  border-radius: var(--radius-large);
+  background: #dedede;
+}
+
+.case__hero-tags {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+}
+
+.hero-tag {
+  padding: 8px 16px;
+  border: 1px solid rgb(255 255 255 / 85%);
+  border-radius: 999px;
+  color: #565a5d;
   font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* ===== Шапка с названием кейса ===== */
+.case__header {
+  margin: 48px 0 24px;
+}
+
+.case__title {
+  margin: 0;
+  color: var(--color-primary);
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+/* ===== Секции кейса ===== */
+.case-section {
+  margin-top: 48px;
+  font-size: var(--font-size-body);
+  line-height: 1.31;
+}
+
+.case__header + .case-section {
+  margin-top: 0;
+}
+
+.case-section--last {
+  margin-bottom: 0;
+}
+
+.case-section p {
+  margin: 0 0 20px;
+}
+
+.section-label {
+  margin: 0 0 20px;
+  color: var(--color-muted);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.3;
   text-transform: uppercase;
 }
 
-.hypothesis {
+/* ===== Блок «фактов» (Команда, Моя роль) ===== */
+.case-facts,
+.result-facts {
+  margin: 24px 0 0;
+}
+
+.case-facts > div,
+.result-facts > div {
+  display: grid;
+  grid-template-columns: 138px minmax(0, 1fr);
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.case-facts dt,
+.result-facts dt {
+  font-weight: 500;
+}
+
+.case-facts dd,
+.result-facts dd {
+  margin: 0;
+}
+
+/* ===== Списки ===== */
+.case-list {
+  margin: 0;
+  padding-left: 32px;
+}
+
+.case-list li {
+  padding-left: 0;
+  margin-bottom: 12px;
+}
+
+.case-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== Карточки инсайтов и сторис ===== */
+.note-list {
+  display: grid;
+  gap: 16px;
+}
+
+.note {
   padding: 20px;
-  margin-bottom: 16px;
   border-radius: var(--radius-medium);
-  background: var(--color-dark-card);
+  background: var(--color-surface);
 }
 
-.hypothesis:last-child {
-  margin-bottom: 0;
-}
-
-.hypothesis p {
+.note h3 {
   margin: 0 0 12px;
+  color: #95999d;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  text-transform: uppercase;
 }
 
-.hypothesis p:last-child {
-  margin-bottom: 0;
+.note p {
+  margin: 0;
 }
 
+.note--story p {
+  color: #30374e;
+}
+
+/* ===== Блок User Flow ===== */
+.case__flow {
+  width: 100%;
+  height: 530px;
+  margin-top: 48px;
+  border: 1px solid #dedede;
+  border-radius: var(--radius-medium);
+  background: #f0f0f0;
+}
+
+/* ============================================================
+   БЛОК ГИПОТЕЗ
+   Внешний контейнер — без фона и без padding,
+   только вертикальный стек с отступом 12px между детьми.
+   ============================================================ */
+.testing-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ============================================================
+   КАРТОЧКА ГИПОТЕЗЫ
+   Вертикальный flex: вопрос → бейдж → критерии.
+   padding 24px, gap 16px, светлый фон #F2F2F2, радиус 16px.
+   ============================================================ */
+.hypothesis {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 16px;
+  background: #F2F2F2;
+  color: #242424;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* Текст самой гипотезы */
+.hypothesis__question {
+  margin: 0;
+}
+
+/* Блок критериев успеха — тоже вертикальный стек, gap 12px */
+.hypothesis__criteria {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hypothesis__criteria p {
+  margin: 0;
+}
+
+/* Бейдж со статусом — как было */
 .hypothesis__badge {
-  display: table;
+  display: inline-block;
   width: fit-content;
   padding: 4px 8px;
-  margin-top: 24px;
   border-radius: 999px;
   background: var(--color-success);
   color: var(--color-success-text);
@@ -608,12 +1157,15 @@ a.project-card:hover .project-card__image {
   text-transform: uppercase;
 }
 
+/* Наблюдения между гипотезами — оставляем как отдельный блок,
+   подкрашиваем под светлый фон и добавляем акцентную линию слева. */
 .testing-panel__observation {
-  margin: 0 0 16px !important;
-  color: #60bc9b;
-  font-size: 12px;
+  margin: 0;
+  padding: 4px 0 4px 16px;
+  border-left: 2px solid var(--color-success-text);
+  color: var(--color-success-text);
+  font-size: 13px;
   line-height: 1.4;
-  text-transform: uppercase;
 }
 
 /* ===== Галерея макетов ===== */
