@@ -14,12 +14,12 @@
 </head>
 <body>
   <div class="page">
-   <aside class="sidebar" aria-label="Информация об авторе">
+  <aside class="sidebar" aria-label="Информация об авторе">
   <div class="sidebar__header">
-    <!-- Кнопка «К кейсам» — над именем -->
-    <a class="pill" href="index.html">← К кейсам</a>
+    <!-- Кнопка «К кейсам» — абсолютно спозиционирована, места в потоке не занимает -->
+    <a class="pill pill--back" href="index.html">← К кейсам</a>
 
-    <!-- Профиль: имя + описание — как на главной -->
+    <!-- Профиль — стоит на том же месте, что и на главной -->
     <div class="profile" id="about">
       <h1 class="profile__name">Анастасия Плаксина</h1>
       <p class="profile__description">
@@ -31,7 +31,6 @@
     </div>
   </div>
 
-  <!-- Кнопки внизу — как на главной -->
   <nav class="navigation" aria-label="Контакты">
     <button class="pill" type="button" data-contact="cv">Скачать CV</button>
     <a class="pill" href="https://t.me/ap_plaksina" target="_blank" rel="noopener">Написать в TG</a>
