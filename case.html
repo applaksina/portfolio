@@ -8,34 +8,34 @@
   <meta name="description" content="Кейс ОРАКУЛ-М: исследование, сценарии, проектирование и проверка MVP системы визуализации данных.">
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
- <script src="script.js" defer></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="script.js" defer></script>
 </head>
 <body>
   <div class="page">
-  <aside class="sidebar" aria-label="Информация об авторе">
-  <div class="sidebar__header">
-    <!-- Кнопка видима -->
-    <a class="pill pill--back" href="index.html">← К кейсам</a>
+    <aside class="sidebar" aria-label="Информация об авторе">
+      <div class="sidebar__header">
+        <!-- Кнопка видима -->
+        <a class="pill pill--back" href="index.html">← К кейсам</a>
 
-    <div class="profile" id="about">
-      <h1 class="profile__name">Анастасия Плаксина</h1>
-      <p class="profile__description">
-        Проектирую интерфейсы с нуля:<br>
-        от исследований и сценариев<br>
-        до передачи макетов в разработку<br>
-        и построения дизайн-систем.
-      </p>
-    </div>
-  </div>
+        <div class="profile" id="about">
+          <h1 class="profile__name">Анастасия Плаксина</h1>
+          <p class="profile__description">
+            Проектирую интерфейсы с нуля:<br>
+            от исследований и сценариев<br>
+            до передачи макетов в разработку<br>
+            и построения дизайн-систем.
+          </p>
+        </div>
+      </div>
 
-  <nav class="navigation" aria-label="Контакты">
-    <button class="pill" type="button" data-contact="cv">Скачать CV</button>
-    <a class="pill" href="https://t.me/ap_plaksina" target="_blank" rel="noopener">Написать в TG</a>
-    <a class="pill" href="mailto:ap.plaksina@mail.ru">Написать Email</a>
-  </nav>
-</aside>
+      <nav class="navigation" aria-label="Контакты">
+        <button class="pill" type="button" data-contact="cv">Скачать CV</button>
+        <a class="pill" href="https://t.me/ap_plaksina" target="_blank" rel="noopener">Написать в TG</a>
+        <a class="pill" href="mailto:ap.plaksina@mail.ru">Написать Email</a>
+      </nav>
+    </aside>
 
     <main class="content case-content" id="case">
       <article class="case">
@@ -202,56 +202,52 @@
           </p>
 
           <div class="testing-panel">
-            <div class="testing-panel__head">
-              <span>Гипотеза</span>
-              <span>Критерии успеха</span>
-            </div>
 
             <div class="hypothesis">
-              <p>
+              <p class="hypothesis__question">
                 Если кнопка загрузки данных расположена в сайдбаре и имеет подсказку
                 «Загрузить данные», пользователь найдёт её без помощи модератора.
-                <span class="hypothesis__badge">Подтверждена частично</span>
               </p>
-              <div>
+              <span class="hypothesis__badge">Подтверждена частично</span>
+              <div class="hypothesis__criteria">
                 <p>Не менее 4 из 5 участников находят кнопку и понимают её назначение.</p>
                 <p>По результатам проверки кнопку перенесли в верхнюю часть сайдбара.</p>
               </div>
             </div>
 
             <div class="hypothesis">
-              <p>
+              <p class="hypothesis__question">
                 Если после загрузки показывать список файлов со статусами валидации
                 и пояснениями ошибок, пользователь поймёт, какие файлы требуют исправления.
-                <span class="hypothesis__badge">Подтверждена</span>
               </p>
-              <div>
+              <span class="hypothesis__badge">Подтверждена</span>
+              <div class="hypothesis__criteria">
                 <p>Не менее 4 из 5 участников различают успешную загрузку и ошибки.</p>
                 <p>Пользователь может назвать причину ошибки и следующий шаг.</p>
               </div>
             </div>
 
             <div class="hypothesis">
-              <p>
+              <p class="hypothesis__question">
                 Если окрашивать регионы на карте в соответствии с динамикой показателя
                 и показывать легенду, пользователь определит территории с улучшением
                 и ухудшением.
-                <span class="hypothesis__badge">Подтверждена</span>
               </p>
-              <div>
+              <span class="hypothesis__badge">Подтверждена</span>
+              <div class="hypothesis__criteria">
                 <p>Не менее 4 из 5 участников верно интерпретируют цвета карты.</p>
                 <p>Легенда помогает понять направление изменения показателя.</p>
               </div>
             </div>
 
             <div class="hypothesis">
-              <p>
+              <p class="hypothesis__question">
                 Если в карточке показателя одновременно показывать значение,
                 отклонение к прошлому году и отклонение от России, пользователь
                 сможет оценить локальную динамику.
-                <span class="hypothesis__badge">Подтверждена</span>
               </p>
-              <div>
+              <span class="hypothesis__badge">Подтверждена</span>
+              <div class="hypothesis__criteria">
                 <p>Не менее 4 из 5 участников различают локальный и общероссийский тренды.</p>
                 <p>Отклонения интерпретируются без переключения на другие экраны.</p>
               </div>
@@ -264,12 +260,12 @@
             </p>
 
             <div class="hypothesis">
-              <p>
+              <p class="hypothesis__question">
                 Если на карте доступны поиск региона и последовательный переход
                 «Россия → округ → регион», пользователь сможет найти нужную территорию
                 для разных аналитических задач.
               </p>
-              <div>
+              <div class="hypothesis__criteria">
                 <p>Не менее 4 из 5 участников находят регион без подсказки модератора.</p>
                 <p>Способ навигации соответствует задаче пользователя.</p>
               </div>
@@ -281,15 +277,16 @@
             </p>
 
             <div class="hypothesis">
-              <p>
+              <p class="hypothesis__question">
                 Если при переключении в режим прогноза явно меняются цветовая схема
                 и подписи, пользователь отличит прогнозные значения от фактических.
               </p>
-              <div>
+              <div class="hypothesis__criteria">
                 <p>Не менее 4 из 5 участников правильно называют текущий режим.</p>
                 <p>Для понимания не требуются пояснения модератора.</p>
               </div>
             </div>
+
           </div>
         </section>
 
