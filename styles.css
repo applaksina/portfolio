@@ -379,7 +379,40 @@ a.project-card:hover .project-card__image {
 .case {
   padding-bottom: 75px;
 }
+/* ============================================================
+   ШИРИНА КОНТЕНТА НА СТРАНИЦЕ КЕЙСА
+   Весь текстовый контент занимает 75% ширины правой колонки:
+   заголовки, абзацы, списки, блоки инсайтов и сторис,
+   тёмная панель с гипотезами.
+   На всю ширину остаются только превью:
+   hero-обложка, user flow, галерея макетов.
+   ============================================================ */
 
+/* Переменная — точка настройки. Хотите уже — 66%, шире — 85%. */
+.case {
+  --text-width: 75%;
+}
+
+/* Всё, что относится к тексту — ограничено 75% */
+.case__title,
+.case-section > p,
+.case-section > .case-list,
+.case-section > .case-facts,
+.case-section > .result-facts,
+.case-section > .note-list,
+.case-section > .testing-panel,
+.case-section > .section-label,
+.gallery__caption,
+.lightbox__caption {
+  max-width: var(--text-width);
+}
+
+/* Превью-блоки — на всю ширину правой колонки */
+.case__hero,
+.case__flow,
+.gallery {
+  max-width: 100%;
+}
 .case__hero {
   position: relative;
   width: 100%;
