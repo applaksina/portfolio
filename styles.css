@@ -286,6 +286,7 @@ a {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-card-gap);
+  padding-top: var(--space-page-top);   /* ← добавили */
   padding-bottom: 24px;
 }
 
