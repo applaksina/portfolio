@@ -149,7 +149,33 @@ if (gallery && lightbox) {
     if (event.key === "ArrowRight" && (lightbox.open || gallery.contains(document.activeElement))) {
       showSlide(activeIndex + 1);
     }
+    
   });
 
   showSlide(0);
 }
+/* ============================================================
+   СВОРАЧИВАЕМЫЕ БЛОКИ
+   По клику на кнопку переключаем класс .is-open на обёртке.
+   Всё остальное делает CSS: max-height, смена текста,
+   поворот иконки, переезд кнопки в поток.
+   ============================================================ */
+document.querySelectorAll('[data-collapsible]').forEach(function (root) {
+  const toggle = root.querySelector('[data-collapsible-toggle]');
+  if (!toggle) return;
+
+  toggle.addEventListener('click', function () {
+    root.classList.toggle('is-open');
+  });
+});
+  toggle.addEventListener('click', function () {
+    const isOpening = !root.classList.contains('is-open');
+    root.classList.toggle('is-open');
+
+    if (isOpening) {
+      // мягко подскроллить к верхней части блока
+      requestAnimationFrame(function () {
+        root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+  });
