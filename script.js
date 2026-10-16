@@ -156,9 +156,10 @@ if (gallery && lightbox) {
 }
 /* ============================================================
    СВОРАЧИВАЕМЫЕ БЛОКИ
-   По клику на кнопку переключаем класс .is-open на обёртке.
+   Клик по кнопке переключает класс .is-open.
    Всё остальное делает CSS: max-height, смена текста,
    поворот иконки, переезд кнопки в поток.
+   Никаких автоскроллов — мгновенная реакция без задержки.
    ============================================================ */
 document.querySelectorAll('[data-collapsible]').forEach(function (root) {
   const toggle = root.querySelector('[data-collapsible-toggle]');
@@ -168,14 +169,3 @@ document.querySelectorAll('[data-collapsible]').forEach(function (root) {
     root.classList.toggle('is-open');
   });
 });
-  toggle.addEventListener('click', function () {
-    const isOpening = !root.classList.contains('is-open');
-    root.classList.toggle('is-open');
-
-    if (isOpening) {
-      // мягко подскроллить к верхней части блока
-      requestAnimationFrame(function () {
-        root.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    }
-  });
