@@ -90,7 +90,7 @@ body {
   overflow: hidden;
   background: var(--color-background);
   color: var(--color-text);
-  font-family: var(--font-main);
+font-family: var(--font-ui);
   -webkit-font-smoothing: antialiased;
   text-wrap: pretty;
 }
