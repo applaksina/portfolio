@@ -552,7 +552,7 @@ a.project-card:hover .project-card__image {
 .testing-panel {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 16px;
 }
 
 /* ============================================================
