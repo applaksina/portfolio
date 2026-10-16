@@ -673,11 +673,11 @@ a.project-card:hover .project-card__image {
   max-width: var(--text-width);
 }
 
-/* Область контента: в свёрнутом виде ограничена 470px */
+/* Область контента: в свёрнутом виде ограничена 300px */
 .collapsible__content {
-  max-height: 470px;
+  max-height: 300px;
   overflow: hidden;
-  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: max-height 0.4s ease-out;
 }
 
 /* В развёрнутом виде — показываем всё (значение с запасом) */
@@ -744,7 +744,7 @@ a.project-card:hover .project-card__image {
 /* В развёрнутом виде кнопка встаёт в поток под контент —
    без наложения и без градиента */
 .collapsible.is-open .collapsible__toggle {
-  margin-top: 16px;
+  margin-top: 0;        
   background: transparent;
 }
 
