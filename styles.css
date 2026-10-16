@@ -377,16 +377,16 @@ a.project-card:hover .project-card__image {
 .case-section > .note-list,
 .case-section > .testing-panel,
 .case-section > .section-label,
-
+.case-section > .case__flow,
+.case-section > .gallery, 
+.case-section > .gallery__caption,
 .lightbox__caption {
   max-width: var(--text-width);
 }
 
 /* Превью-блоки — на всю ширину */
 .case__hero,
-.case__flow,
-.gallery 
-.gallery__caption {
+ {
   max-width: 100%;
 }
 
