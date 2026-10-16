@@ -433,7 +433,7 @@ a.project-card:hover .project-card__image {
 .case-section {
   margin-top: 48px;
   font-size: var(--font-size-body);
-  line-height: 1.31;
+  line-height: 1.4;
 }
 
 .case__header + .case-section {
