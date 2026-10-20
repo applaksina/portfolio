@@ -640,6 +640,38 @@ a.project-card:hover .project-card__image {
 .hypothesis__block p {
   margin: 0;
 }
+/* ============================================================
+   СПИСКИ ВНУТРИ ГИПОТЕЗ
+   Пункты с тире вместо стандартных буллитов.
+   ============================================================ */
+.hypothesis__list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.hypothesis__list li {
+  position: relative;
+  padding-left: 24px;    /* место под тире */
+  margin-bottom: 8px;
+  font-family: var(--font-ui);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.46;
+  color: #242424;
+}
+
+.hypothesis__list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Тире перед каждым пунктом */
+.hypothesis__list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: #242424;
+}
 
 /* Блок инсайта: заголовок ИНСАЙТ + текст, фон #DD2B24 5% */
 .insight {
