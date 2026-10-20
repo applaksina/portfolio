@@ -156,6 +156,17 @@ a {
 
 .pill--back {
   /* пусто — оставляем для явности */
+  gap: 6px;
+  height: 38px;
+  padding: 6px 16px 6px 12px;
+
+}
+/* Иконка внутри кнопки «К кейсам» — 24×24, не сжимается. */
+.pill--back .pill__icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  flex: none;
 }
 
 /* Призрачная кнопка для главной страницы. */
@@ -364,7 +375,7 @@ a.project-card:hover .project-card__image {
    ============================================================ */
 .case {
   --text-width: 75%;
-  padding-top: var(--space-page-top);    /* ← добавили */
+  padding-top: var(--space-page-top);    
   padding-bottom: 80px;
 }
 
